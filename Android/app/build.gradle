@@ -49,8 +49,7 @@ android {
         }
         qa {
             dimension "env"
-            versionName = rootProject.ext.versionName + " - qa - " + "2"
-            // + "git rev-parse --short HEAD".execute().text.trim()
+            versionName = rootProject.ext.versionName + " - qa - " + "git rev-parse --short HEAD".execute().text.trim()
         }
         production {
             dimension "env"
