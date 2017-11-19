@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AppCompatResource">
+
+    <item
+        android:id="@+id/reload"
+        android:icon="@drawable/ic_reload"
+        android:showAsAction="ifRoom"
+        android:title="@string/app_reload"/>
+
+    <item
+        android:id="@+id/theme_dark"
+        android:showAsAction="never"
+        android:title="@string/app_use_theme_dark"/>
+
+    <item
+        android:id="@+id/theme_light"
+        android:showAsAction="never"
+        android:title="@string/app_use_theme_light"/>
+
+    <item
+        android:id="@+id/theme_doge"
+        android:showAsAction="never"
+        android:title="@string/app_use_theme_doge"/>
+
+    <item
+        android:id="@+id/theme_eleven"
+        android:showAsAction="never"
+        android:title="@string/app_use_theme_eleven"/>
+
+    <item
+        android:id="@+id/theme_ada"
+        android:showAsAction="never"
+        android:title="@string/app_use_theme_ada"/>
+
+    <item
+        android:id="@+id/about"
+        android:showAsAction="never"
+        android:title="@string/about_title"/>
+
+</menu>

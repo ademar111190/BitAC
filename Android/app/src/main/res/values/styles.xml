@@ -1,0 +1,319 @@
+<resources>
+
+    <style name="BaseLightTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="BaseDarkTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="BaseDialogLightTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="BaseDialogDarkTheme" parent="@style/Theme.AppCompat.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="StartTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_start</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="AppLightTheme" parent="BaseLightTheme">
+        <item name="android:colorBackground">@color/theme_light_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_light_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_light_flat</item>
+        <item name="android:textColorPrimary">@color/theme_light_icons</item>
+        <item name="android:textColorSecondary">@color/theme_light_icons</item>
+        <item name="android:windowBackground">@color/theme_light_window</item>
+        <item name="accent_text">@color/theme_light_accent_text</item>
+        <item name="background_color">@color/theme_light_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">2dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_light_accent</item>
+        <item name="colorPrimary">@color/theme_light_base</item>
+        <item name="colorPrimaryDark">@color/theme_light_dark</item>
+        <item name="flat_color">@color/theme_light_flat</item>
+        <item name="flat_text">@color/theme_light_flat_text</item>
+        <item name="primary_icon">@color/theme_light_icons</item>
+        <item name="primary_text">@color/theme_light_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_light_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_light_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDarkTheme" parent="BaseDarkTheme">
+        <item name="android:colorBackground">@color/theme_dark_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_dark_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_dark_flat</item>
+        <item name="android:textColorPrimary">@color/theme_dark_icons</item>
+        <item name="android:textColorSecondary">@color/theme_dark_icons</item>
+        <item name="android:windowBackground">@color/theme_dark_window</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_dark_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">2dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_dark_accent</item>
+        <item name="colorPrimary">@color/theme_dark_base</item>
+        <item name="colorPrimaryDark">@color/theme_dark_dark</item>
+        <item name="flat_color">@color/theme_dark_flat</item>
+        <item name="flat_text">@color/theme_dark_flat_text</item>
+        <item name="primary_icon">@color/theme_dark_icons</item>
+        <item name="primary_text">@color/theme_dark_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_dark_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_dark_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDogeTheme" parent="BaseLightTheme">
+        <item name="android:colorBackground">@color/theme_doge_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_doge_edge_effect</item>
+        <item name="android:fontFamily">@font/coming_soon</item>
+        <item name="android:navigationBarColor">@color/theme_doge_flat</item>
+        <item name="android:textColorPrimary">@color/theme_doge_icons</item>
+        <item name="android:textColorSecondary">@color/theme_doge_icons</item>
+        <item name="android:windowBackground">@color/theme_doge_window</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_doge_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">8dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_doge_accent</item>
+        <item name="colorPrimary">@color/theme_doge_base</item>
+        <item name="colorPrimaryDark">@color/theme_doge_dark</item>
+        <item name="flat_color">@color/theme_doge_flat</item>
+        <item name="flat_text">@color/theme_doge_flat_text</item>
+        <item name="primary_icon">@color/theme_doge_icons</item>
+        <item name="primary_text">@color/theme_doge_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_doge_base</item>
+        <item name="theme_font">@font/coming_soon</item>
+        <item name="toolbar_background">@color/theme_doge_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppElevenTheme" parent="BaseLightTheme">
+        <item name="android:colorBackground">@color/theme_eleven_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_eleven_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_eleven_flat</item>
+        <item name="android:textColorPrimary">@color/theme_eleven_icons</item>
+        <item name="android:textColorSecondary">@color/theme_eleven_icons</item>
+        <item name="android:windowBackground">@drawable/bg_theme_eleven</item>
+        <item name="accent_text">@color/theme_eleven_accent_text</item>
+        <item name="background_color">@color/theme_eleven_background</item>
+        <item name="card_cell_click">root</item>
+        <item name="card_corner">0dp</item>
+        <item name="card_elevation">0dp</item>
+        <item name="card_overflow_visibility">gone</item>
+        <item name="colorAccent">@color/theme_eleven_accent</item>
+        <item name="colorPrimary">@color/theme_eleven_dark</item>
+        <item name="colorPrimaryDark">@color/theme_eleven_base</item>
+        <item name="flat_color">@color/theme_eleven_flat</item>
+        <item name="flat_text">@color/theme_eleven_flat_text</item>
+        <item name="primary_icon">@color/theme_eleven_icons</item>
+        <item name="primary_text">@color/theme_eleven_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_eleven_base</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_eleven_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppAdaTheme" parent="BaseDarkTheme">
+        <item name="android:colorBackground">@color/theme_ada_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_ada_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_ada_flat</item>
+        <item name="android:textColorPrimary">@color/theme_ada_icons</item>
+        <item name="android:textColorSecondary">@color/theme_ada_icons</item>
+        <item name="android:windowBackground">@drawable/bg_theme_ada</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_ada_background</item>
+        <item name="card_cell_click">root</item>
+        <item name="card_corner">0dp</item>
+        <item name="card_elevation">0dp</item>
+        <item name="card_overflow_visibility">gone</item>
+        <item name="colorAccent">@color/theme_ada_accent</item>
+        <item name="colorPrimary">@color/theme_ada_base</item>
+        <item name="colorPrimaryDark">@color/theme_ada_dark</item>
+        <item name="flat_color">@color/theme_ada_flat</item>
+        <item name="flat_text">@color/theme_ada_flat_text</item>
+        <item name="primary_icon">@color/theme_ada_icons</item>
+        <item name="primary_text">@color/theme_ada_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_ada_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_ada_dark</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDialogLightTheme" parent="BaseDialogLightTheme">
+        <item name="android:colorBackground">@color/theme_light_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_light_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_light_flat</item>
+        <item name="android:textColorPrimary">@color/theme_light_icons</item>
+        <item name="android:textColorSecondary">@color/theme_light_icons</item>
+        <item name="android:windowBackground">@color/theme_light_window</item>
+        <item name="accent_text">@color/theme_light_accent_text</item>
+        <item name="background_color">@color/theme_light_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">2dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_light_accent</item>
+        <item name="colorPrimary">@color/theme_light_base</item>
+        <item name="colorPrimaryDark">@color/theme_light_dark</item>
+        <item name="flat_color">@color/theme_light_flat</item>
+        <item name="flat_text">@color/theme_light_flat_text</item>
+        <item name="primary_icon">@color/theme_light_icons</item>
+        <item name="primary_text">@color/theme_light_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_light_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_light_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDialogDarkTheme" parent="BaseDialogDarkTheme">
+        <item name="android:colorBackground">@color/theme_dark_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_dark_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_dark_flat</item>
+        <item name="android:textColorPrimary">@color/theme_dark_icons</item>
+        <item name="android:textColorSecondary">@color/theme_dark_icons</item>
+        <item name="android:windowBackground">@color/theme_dark_window</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_dark_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">2dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_dark_accent</item>
+        <item name="colorPrimary">@color/theme_dark_base</item>
+        <item name="colorPrimaryDark">@color/theme_dark_dark</item>
+        <item name="flat_color">@color/theme_dark_flat</item>
+        <item name="flat_text">@color/theme_dark_flat_text</item>
+        <item name="primary_icon">@color/theme_dark_icons</item>
+        <item name="primary_text">@color/theme_dark_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_dark_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@color/theme_dark_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDialogDogeTheme" parent="BaseDialogLightTheme">
+        <item name="android:colorBackground">@color/theme_doge_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_doge_edge_effect</item>
+        <item name="android:fontFamily">@font/coming_soon</item>
+        <item name="android:navigationBarColor">@color/theme_doge_flat</item>
+        <item name="android:textColorPrimary">@color/theme_doge_icons</item>
+        <item name="android:textColorSecondary">@color/theme_doge_icons</item>
+        <item name="android:windowBackground">@color/theme_doge_window</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_doge_background</item>
+        <item name="card_cell_click">card</item>
+        <item name="card_corner">8dp</item>
+        <item name="card_elevation">4dp</item>
+        <item name="card_overflow_visibility">visible</item>
+        <item name="colorAccent">@color/theme_doge_accent</item>
+        <item name="colorPrimary">@color/theme_doge_base</item>
+        <item name="colorPrimaryDark">@color/theme_doge_dark</item>
+        <item name="flat_color">@color/theme_doge_flat</item>
+        <item name="flat_text">@color/theme_doge_flat_text</item>
+        <item name="primary_icon">@color/theme_doge_icons</item>
+        <item name="primary_text">@color/theme_doge_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_doge_base</item>
+        <item name="theme_font">@font/coming_soon</item>
+        <item name="toolbar_background">@color/theme_doge_base</item>
+        <item name="toolbar_elevation">4dp</item>
+    </style>
+
+    <style name="AppDialogElevenTheme" parent="BaseDialogLightTheme">
+        <item name="android:colorBackground">@color/theme_eleven_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_eleven_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_eleven_flat</item>
+        <item name="android:textColorPrimary">@color/theme_eleven_icons</item>
+        <item name="android:textColorSecondary">@color/theme_eleven_icons</item>
+        <item name="android:windowBackground">@color/theme_eleven_window</item>
+        <item name="accent_text">@color/theme_eleven_accent_text</item>
+        <item name="background_color">@color/theme_eleven_background</item>
+        <item name="card_cell_click">root</item>
+        <item name="card_corner">0dp</item>
+        <item name="card_elevation">0dp</item>
+        <item name="card_overflow_visibility">gone</item>
+        <item name="colorAccent">@color/theme_eleven_accent</item>
+        <item name="colorPrimary">@color/theme_eleven_base</item>
+        <item name="colorPrimaryDark">@color/theme_eleven_dark</item>
+        <item name="flat_color">@color/theme_eleven_flat</item>
+        <item name="flat_text">@color/theme_eleven_flat_text</item>
+        <item name="primary_icon">@color/theme_eleven_icons</item>
+        <item name="primary_text">@color/theme_eleven_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_eleven_base</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@null</item>
+        <item name="toolbar_elevation">0dp</item>
+    </style>
+
+    <style name="AppDialogAdaTheme" parent="BaseDialogDarkTheme">
+        <item name="android:colorBackground">@color/theme_ada_window</item>
+        <item name="android:colorEdgeEffect">@color/theme_ada_edge_effect</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:navigationBarColor">@color/theme_ada_flat</item>
+        <item name="android:textColorPrimary">@color/theme_ada_icons</item>
+        <item name="android:textColorSecondary">@color/theme_ada_icons</item>
+        <item name="android:windowBackground">@drawable/bg_theme_ada</item>
+        <item name="accent_text">@color/theme_doge_accent_text</item>
+        <item name="background_color">@color/theme_ada_background</item>
+        <item name="card_cell_click">root</item>
+        <item name="card_corner">0dp</item>
+        <item name="card_elevation">0dp</item>
+        <item name="card_overflow_visibility">gone</item>
+        <item name="colorAccent">@color/theme_ada_accent</item>
+        <item name="colorPrimary">@color/theme_ada_base</item>
+        <item name="colorPrimaryDark">@color/theme_ada_dark</item>
+        <item name="flat_color">@color/theme_ada_flat</item>
+        <item name="flat_text">@color/theme_ada_flat_text</item>
+        <item name="primary_icon">@color/theme_ada_icons</item>
+        <item name="primary_text">@color/theme_ada_text</item>
+        <item name="snack_bar_action_text_color">@color/theme_ada_accent</item>
+        <item name="theme_font">sans-serif</item>
+        <item name="toolbar_background">@null</item>
+        <item name="toolbar_elevation">0dp</item>
+    </style>
+
+    <style name="AppToolbar">
+        <item name="titleTextAppearance">@style/AppToolbarTitle</item>
+    </style>
+
+    <style name="AppToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">?attr/theme_font</item>
+    </style>
+
+    <style name="AppTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">?attr/theme_font</item>
+    </style>
+
+    <style name="AppButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">?attr/theme_font</item>
+    </style>
+
+</resources>

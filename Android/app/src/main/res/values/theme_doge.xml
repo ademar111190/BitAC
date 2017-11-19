@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="theme_doge_base">#f9a825</color>
+    <color name="theme_doge_dark">#c17900</color>
+    <color name="theme_doge_light">#ffd95a</color>
+    <color name="theme_doge_text">#6a1b9a</color>
+    <color name="theme_doge_icons">#387002</color>
+
+    <color name="theme_doge_accent">#c17900</color>
+    <color name="theme_doge_accent_text">#ffffff</color>
+
+    <color name="theme_doge_window">#fff8e1</color>
+    <color name="theme_doge_background">#ffffe4</color>
+    <color name="theme_doge_flat">#ac0800</color>
+    <color name="theme_doge_flat_text">#ffffff</color>
+
+    <color name="theme_doge_highlight">#40ffffff</color>
+    <color name="theme_doge_divider">#bdbdbd</color>
+    <color name="theme_doge_over_screen">#80000000</color>
+    <color name="theme_doge_edge_effect">#c17900</color>
+
+</resources>

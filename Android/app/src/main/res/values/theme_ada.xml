@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dark -->
+    <color name="theme_ada_base">#7b1fa2</color>
+    <color name="theme_ada_dark">#4a0072</color>
+    <color name="theme_ada_light">#ae52d4</color>
+    <color name="theme_ada_text">#fafafa</color>
+    <color name="theme_ada_icons">#ffffff</color>
+
+    <color name="theme_ada_accent">#ffeb3b</color>
+    <color name="theme_ada_accent_text">#000000</color>
+
+    <color name="theme_ada_window">#12005e</color>
+    <color name="theme_ada_background">#00000000</color>
+    <color name="theme_ada_flat">#12005e</color>
+    <color name="theme_ada_flat_text">#ffffff</color>
+
+    <color name="theme_ada_highlight">#40ffffff</color>
+    <color name="theme_ada_divider">#bdbdbd</color>
+    <color name="theme_ada_over_screen">#80000000</color>
+    <color name="theme_ada_edge_effect">#fafafa</color>
+
+</resources>

@@ -1,0 +1,54 @@
+<resources>
+
+    <string name="app_cancel">Cancel</string>
+    <string name="app_check">Check</string>
+    <string name="app_copied">Copied</string>
+    <string name="app_delete">Delete</string>
+    <string name="app_ok">OK</string>
+    <string name="app_reload">Refresh</string>
+    <string name="app_save">Save</string>
+    <string name="app_undo">Undo</string>
+    <string name="app_unnamed">Unnamed</string>
+
+    <string name="app_use_theme_dark">Uses dark theme</string>
+    <string name="app_use_theme_light">Uses light theme</string>
+    <string name="app_use_theme_doge">Uses doge theme</string>
+    <string name="app_use_theme_eleven">Uses 11 theme</string>
+    <string name="app_use_theme_ada">Uses ada theme</string>
+
+    <string name="home_empty_hint">Welcome to Bitcoin Address Checker App (BitAC).\n\nYou can click on Check Address any time you want to see how many bitcoins an address has after you can save it to a future quick check.\n\nAll your saved address will appear here, enjoy the app.</string>
+    <string name="home_deleted_address_message">The address %s was deleted</string>
+
+    <string name="check_address_title">Check address</string>
+    <string name="check_address_input_hint">Click on QR code icon to read the bitcoin address with your camera or type or paste the address into the text field below.</string>
+    <string name="check_address_qr_hint">Point to address QR code\n</string>
+    <string name="check_address_save_hint">You can see the address balance below, you can also choose a name and save to fast check in the future.</string>
+    <string name="check_address_address">Address</string>
+    <string name="check_address_name">Name</string>
+    <string name="check_address_action_change">Change</string>
+    <string name="check_address_action_done">Done</string>
+    <string name="check_address_qr_code_fail">Failed to read the address</string>
+    <string name="check_address_invalid_address">Invalid address</string>
+
+    <string name="address_copy_address">Copy address</string>
+    <string name="address_copy_address_label">Address</string>
+    <string name="address_copy_balance">Copy balance</string>
+    <string name="address_copy_balance_label">Balance</string>
+
+    <string name="error_message_unknown">An unknown error has occurred.</string>
+    <string name="error_message_unauthorized">Unauthorized by the server</string>
+    <string name="error_message_no_connection">The communication with the server has failed. Please verify your connection.</string>
+
+    <string name="about_title">About</string>
+    <string name="about_description">Easy and quick way to check the balance of bitcoin addresses.</string>
+    <string name="about_text">
+        <![CDATA[
+            <p>Bitcoin Address Checker (<b>BitAC</b>) is an open-source application designed to be lightweight and fast. The idea is to provide to Android users an easy and quick way to check the balance of bitcoin addresses.</p>
+            <p>This application does not prove and is not intended to provide any functionality of a bitcoin wallet, so you can not receive, send or save bitcoins with BitAC, you can only check how many bitcoins a wallet has.</p>
+            <p>If you like to report a problem, propose a solution, or ask questions, you can go to the application repository at the following address: <a href="https://github.com/ademar111190/BitAC"> https://github.com/ademar111190/BitAC</a> you can also send an email to <a href="mailto:ademar111190@gmail.com">ademar111190@gmail.com</a>.</p>
+            <p>All contributions are welcome, from text corrections to new languages translations, from design improvements to a full UX/UI redesign, from a simple bug-fix to a new feature, please feel free to contribute.</p>
+            <p>The application uses the <a href="https://blockchain.info/api">blockchain.info</a> API, ideally it would have its own service, however to maintain a server it is necessary money, so if you want to contribute to the project financially you can donate bitcoin to the following address: <a href="bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8">1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8</a>.</p>
+        ]]>
+    </string>
+
+</resources>

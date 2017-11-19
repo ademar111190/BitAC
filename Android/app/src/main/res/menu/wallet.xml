@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/copy_address"
+        android:title="@string/address_copy_address"/>
+
+    <item
+        android:id="@+id/copy_balance"
+        android:title="@string/address_copy_balance"/>
+
+    <item
+        android:id="@+id/delete"
+        android:title="@string/app_delete"/>
+
+</menu>

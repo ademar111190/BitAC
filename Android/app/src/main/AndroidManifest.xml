@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="ademar.bitac"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false"/>
+
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false"/>
+
+    <application
+        android:name="ademar.bitac.App"
+        android:allowBackup="true"
+        android:description="@string/about_description"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+
+        <activity
+            android:name="ademar.bitac.view.StartActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/StartTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ademar.bitac.view.AboutActivity$AboutActivityLight"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppLightTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.AboutActivity$AboutActivityDark"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDarkTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.AboutActivity$AboutActivityDoge"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDogeTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.AboutActivity$AboutActivityEleven"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppElevenTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.AboutActivity$AboutActivityAda"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppAdaTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.HomeActivity$HomeActivityLight"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppLightTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.HomeActivity$HomeActivityDark"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDarkTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.HomeActivity$HomeActivityDoge"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDogeTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.HomeActivity$HomeActivityEleven"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppElevenTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.HomeActivity$HomeActivityAda"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppAdaTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.CheckAddressActivity$CheckAddressActivityLight"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDialogLightTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.CheckAddressActivity$CheckAddressActivityDark"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDialogDarkTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.CheckAddressActivity$CheckAddressActivityDoge"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDialogDogeTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.CheckAddressActivity$CheckAddressActivityEleven"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDialogElevenTheme"/>
+
+        <activity
+            android:name="ademar.bitac.view.CheckAddressActivity$CheckAddressActivityAda"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppDialogAdaTheme"/>
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullUser"
+            tools:replace="screenOrientation"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts"/>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f792ce56e532002c70c59f0028acfb7de130a144"/>
+
+    </application>
+
+</manifest>

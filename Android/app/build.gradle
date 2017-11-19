@@ -1,0 +1,106 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "io.fabric"
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "ademar.bitac"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        resConfigs "en", "pt", "es"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias System.getenv("BITAC_KEY_ALIAS")
+            keyPassword System.getenv("BITAC_KEY_PASSWORD")
+            storeFile file("../../Assets/keystore")
+            storePassword System.getenv("BITAC_STORE_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        all {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android.txt")
+            proguardFiles "proguard-rules.pro"
+
+            buildConfigField "String", "BASE_API", "\"https://blockchain.info/\""
+        }
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions "env"
+    productFlavors {
+        development {
+            dimension "env"
+            versionName = rootProject.ext.versionName + " - development "
+        }
+        qa {
+            dimension "env"
+            versionName = rootProject.ext.versionName + " - qa - " + "2"
+            // + "git rev-parse --short HEAD".execute().text.trim()
+        }
+        production {
+            dimension "env"
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude "META-INF/LICENSE"
+        exclude "META-INF/LICENSE.txt"
+        exclude "META-INF/NOTICE.txt"
+        exclude "META-INF/*.properties"
+    }
+
+}
+
+dependencies {
+    kapt "com.bluelinelabs:logansquare-compiler:$loganSquareVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:cardview-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.bluelinelabs:logansquare:$loganSquareVersion"
+    implementation "com.github.aurae.retrofit2:converter-logansquare:$loganSquareConverterVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.journeyapps:zxing-android-embedded:$xzingVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+    implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
+        transitive = true
+    }
+
+    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "org.assertj:assertj-core:$assertJVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+}

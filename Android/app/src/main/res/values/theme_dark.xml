@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dark -->
+    <color name="theme_dark_base">#212121</color>
+    <color name="theme_dark_dark">#000000</color>
+    <color name="theme_dark_light">#484848</color>
+    <color name="theme_dark_text">#fafafa</color>
+    <color name="theme_dark_icons">#ffffff</color>
+
+    <color name="theme_dark_accent">#f9a825</color>
+    <color name="theme_dark_accent_text">#000000</color>
+
+    <color name="theme_dark_window">#484848</color>
+    <color name="theme_dark_background">#212121</color>
+    <color name="theme_dark_flat">#c17900</color>
+    <color name="theme_dark_flat_text">#ffffff</color>
+
+    <color name="theme_dark_highlight">#40ffffff</color>
+    <color name="theme_dark_divider">#bdbdbd</color>
+    <color name="theme_dark_over_screen">#80000000</color>
+    <color name="theme_dark_edge_effect">#fafafa</color>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="theme_light_base">#fafafa</color>
+    <color name="theme_light_dark">#d9d9d9</color>
+    <color name="theme_light_light">#ffffff</color>
+    <color name="theme_light_text">#212121</color>
+    <color name="theme_light_icons">#000000</color>
+
+    <color name="theme_light_accent">#f9a825</color>
+    <color name="theme_light_accent_text">#ffffff</color>
+
+    <color name="theme_light_window">#fafafa</color>
+    <color name="theme_light_background">#ffffff</color>
+    <color name="theme_light_flat">#bdbdbd</color>
+    <color name="theme_light_flat_text">#ffffff</color>
+
+    <color name="theme_light_highlight">#10000000</color>
+    <color name="theme_light_divider">#bdbdbd</color>
+    <color name="theme_light_over_screen">#80000000</color>
+    <color name="theme_light_edge_effect">#212121</color>
+
+</resources>

@@ -1,0 +1,54 @@
+<resources>
+
+    <string name="app_cancel">Cancelar</string>
+    <string name="app_check">Comprobar</string>
+    <string name="app_copied">Pegado</string>
+    <string name="app_delete">Borrar</string>
+    <string name="app_ok">OK</string>
+    <string name="app_reload">Recargar</string>
+    <string name="app_save">Guardar</string>
+    <string name="app_undo">Deshacer</string>
+    <string name="app_unnamed">Sin nombre</string>
+
+    <string name="app_use_theme_dark">Use tema oscuro</string>
+    <string name="app_use_theme_light">Use tema claro</string>
+    <string name="app_use_theme_doge">Use tema doge</string>
+    <string name="app_use_theme_eleven">Use tema 11</string>
+    <string name="app_use_theme_ada">Use tema ada</string>
+
+    <string name="home_empty_hint">Bienvenido a la aplicación Comprobador de direcciones Bitcoin (BitAC).\n\nPuede hacer clic en el botón Comprobar dirección en cualquier momento para ver cuántos bitcoins tiene una dirección, después puedes guardar la dirección para comprobarla de nuevo en el futuro.\n\nTodas las direcciones guardadas aparecerán aquí, aproveche la aplicación.</string>
+    <string name="home_deleted_address_message">la dirección %s fue borrada</string>
+
+    <string name="check_address_title">Comprobar dirección</string>
+    <string name="check_address_input_hint">Haga clic en el icono de QR code para leer la dirección bitcoin con su cámara o escriba o pegue la dirección en el campo abajo.</string>
+    <string name="check_address_qr_hint">Apunte al QR code\n</string>
+    <string name="check_address_save_hint">Tu puedes ver la dirección abajo, también puedes elegir un nombre y guardar la dirección para comprobarlo rápidamente en el futuro.</string>
+    <string name="check_address_address">Dirección</string>
+    <string name="check_address_name">Nombre</string>
+    <string name="check_address_action_change">Cambiar</string>
+    <string name="check_address_action_done">Terminar</string>
+    <string name="check_address_qr_code_fail">No se pudo leer la dirección de bitcoin</string>
+    <string name="check_address_invalid_address">Dirección invalida</string>
+
+    <string name="address_copy_address">Copiar dirección</string>
+    <string name="address_copy_address_label">Dirección</string>
+    <string name="address_copy_balance">Copiar saldo</string>
+    <string name="address_copy_balance_label">Saldo</string>
+
+    <string name="error_message_unknown">Se ha producido un error desconocido.</string>
+    <string name="error_message_unauthorized">Servidor no autorizó la llamada</string>
+    <string name="error_message_no_connection">La comunicación con el servidor falló. Por favor, compruebe su conexión e inténtelo de nuevo.</string>
+
+    <string name="about_title">Acerca</string>
+    <string name="about_description">Compruebe el saldo de las carteras bitcoin de manera fácil y rápida.</string>
+    <string name="about_text">
+        <![CDATA[
+            <p>El comprobador de direcciones Bitcoin (<b>BitAC</b>) del inglés (<i>Bitcoin Address Checker</i>) es una aplicación de código abierto diseñada para ser ligera y rápida y proporcionar a los usuarios de Android una manera fácil y rápida de consultar el saldo de direcciones bitcoin.</p>
+            <p>Esta aplicación no provee y no tiene la intención de proveer cualquier funcionalidad de una cartera de bitcoin, por lo que no podrá recibir, transferir o guardar bitcoins con BitAC, sólo podrá comprobar cuántos bitcoins tiene una cartera.</p>
+            <p>Si desea informar un problema, proponer una solución o hacer preguntas, puede ir al repositorio de la aplicación en la siguiente dirección: <a href="https://github.com/ademar111190/BitAC">https://github.com/ademar111190/BitAC</a> también puede enviar un correo electrónico a <a href="mailto:ademar111190@gmail.com">ademar111190@gmail.com</a>.</p>
+            <p>Todas las contribuciones son bienvenidas, desde correcciones de textos a traducciones a nuevos idiomas, desde mejoras puntuales en el diseño a una completa reformulación en la UX/UI de la aplicación, desde un simple bug-fix a una nueva funcionalidad, usted es bienvenido a hacer contribuciones.</p>
+            <p>Esta aplicación utiliza la API de <a href="https://blockchain.info/api">blockchain.info</a>, lo ideal sería tener un servicio propio, pero para mantener un servidor es necesario dinero, entonces si usted desea contribuir con el proyecto financieramente usted puede donar bitcoin a la dirección siguiente: <a href="bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8">1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8</a>.</p>
+        ]]>
+    </string>
+
+</resources>
