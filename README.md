@@ -1,4 +1,5 @@
 # BitAC
+[![Build Status](https://www.bitrise.io/app/89337afd9c647957/status.svg?token=oxMgLbe1ic0UbR0k1AnQ_w&branch=master)](https://www.bitrise.io/app/89337afd9c647957)
 
 Bitcoin Address Checker (**BitAC**) is an open-source application designed to be lightweight and fast. The idea is to provide to Android users an easy and quick way to check the balance of bitcoin addresses.
 
