@@ -57,7 +57,6 @@ abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
         input_cancel.setOnClickListener { presenter.cancel() }
         input_check.setOnClickListener { presenter.check(input_address.text.toString()) }
         output_change.setOnClickListener { presenter.change() }
-        output_done.setOnClickListener { presenter.done() }
         output_save.setOnClickListener { presenter.save(output_name.text.toString()) }
         input_address.setActionNext { presenter.check(input_address.text.toString()) }
         output_name.setActionSend { presenter.save(output_name.text.toString()) }
@@ -127,7 +126,6 @@ abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
             output_root.visibility = View.VISIBLE
 
             output_change.visibility = View.VISIBLE
-            output_done.visibility = View.VISIBLE
             output_save.visibility = View.VISIBLE
             output_load.visibility = View.GONE
 
@@ -152,7 +150,6 @@ abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
 
     override fun showSaveLoading() {
         output_change.visibility = View.GONE
-        output_done.visibility = View.GONE
         output_save.visibility = View.GONE
         output_load.visibility = View.VISIBLE
     }

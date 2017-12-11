@@ -187,16 +187,6 @@ class CheckAddressPresenterTest {
     }
 
     @Test
-    fun testDone() {
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
-        presenter.view = StubCheckAddressView()
-        presenter.done()
-
-        verify(mockActivity).finish()
-        verify(mockAnalytics).trackVerifyAddressDone()
-    }
-
-    @Test
     fun testParseActionNullAddress() {
         val view = object : StubCheckAddressView() {
             override fun showInput(viewModel: WalletViewModel) {

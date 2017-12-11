@@ -60,11 +60,6 @@ class CheckAddressPresenter @Inject constructor(
         analytics.trackVerifyAddressCancel()
     }
 
-    fun done() {
-        activity.finish()
-        analytics.trackVerifyAddressDone()
-    }
-
     fun parseAction(action: String?) {
         Log.d("Wizeline", ">> $action")
         val address = bitcoinUri.getAddress(action)

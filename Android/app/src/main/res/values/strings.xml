@@ -26,7 +26,6 @@
     <string name="check_address_address">Address</string>
     <string name="check_address_name">Name</string>
     <string name="check_address_action_change">Change</string>
-    <string name="check_address_action_done">Done</string>
     <string name="check_address_qr_code_fail">Failed to read the address</string>
     <string name="check_address_invalid_address">Invalid address</string>
 

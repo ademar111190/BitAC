@@ -59,10 +59,6 @@ class Analytics @Inject constructor(
         answers.logCustom(CustomEvent("VerifyAddressChange"))
     }
 
-    fun trackVerifyAddressDone() {
-        answers.logCustom(CustomEvent("VerifyAddressDone"))
-    }
-
     fun trackVerifyAddressVerify(e: Throwable? = null) {
         answers.logCustom(CustomEvent("VerifyAddressSubmit")
                 .putCustomAttribute("success", if (e == null) "yes" else "no")

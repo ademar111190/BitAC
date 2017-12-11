@@ -26,7 +26,6 @@
     <string name="check_address_address">Endereço</string>
     <string name="check_address_name">Nome</string>
     <string name="check_address_action_change">Alterar</string>
-    <string name="check_address_action_done">Terminar</string>
     <string name="check_address_qr_code_fail">Não foi possível ler o endereço de bitcoin</string>
     <string name="check_address_invalid_address">Endereço invalido</string>
 

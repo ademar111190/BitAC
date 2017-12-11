@@ -80,21 +80,9 @@
         android:layout_below="@+id/output_name_layout"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:layout_toStartOf="@+id/output_done"
-        android:fontFamily="?attr/theme_font"
-        android:text="@string/check_address_action_change"/>
-
-    <Button
-        android:id="@+id/output_done"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/output_name_layout"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
         android:layout_toStartOf="@+id/output_save"
         android:fontFamily="?attr/theme_font"
-        android:text="@string/check_address_action_done"/>
+        android:text="@string/check_address_action_change"/>
 
     <Button
         android:id="@+id/output_save"
