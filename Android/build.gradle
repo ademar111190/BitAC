@@ -1,29 +1,29 @@
 buildscript {
     ext {
         compileSdkVersion = 27
-        buildToolsVersion = "27.0.0"
+        buildToolsVersion = "27.0.2"
         minSdkVersion = 21
         targetSdkVersion = 27
         versionCode = 1
         versionName = "1.0.0"
 
         assertJVersion = "3.8.0"
-        crashlyticsVersion = "2.7.1@aar"
-        daggerVersion = "2.11"
-        fabricVersion = "1.24.2"
-        gradleVersion = "3.0.0"
+        crashlyticsVersion = "2.8.0@aar"
+        daggerVersion = "2.12"
+        fabricVersion = "1.25.1"
+        gradleVersion = "3.0.1"
         jUnitVersion = "4.12"
         loganSquareVersion = "1.3.7"
         loganSquareConverterVersion = "1.4.1"
-        kotlinVersion = "1.1.60"
-        mockitoVersion = "2.10.0"
+        kotlinVersion = "1.2.0"
+        mockitoVersion = "2.13.0"
         mockitoKotlinVersion = "1.5.0"
-        okHttpVersion = "3.9.0"
+        okHttpVersion = "3.9.1"
         retrofitVersion = "2.3.0"
         rxAndroidVersion = "2.0.1"
         rxBindingVersion = "2.0.0"
-        rxJavaVersion = "2.1.6"
-        supportVersion = "27.0.1"
+        rxJavaVersion = "2.1.7"
+        supportVersion = "27.0.2"
         xzingVersion = "3.5.0"
     }
     repositories {
