@@ -7,7 +7,6 @@ import ademar.bitac.viewmodel.WalletMapper
 import ademar.bitac.viewmodel.WalletViewModel
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -61,10 +60,9 @@ class CheckAddressPresenter @Inject constructor(
     }
 
     fun parseAction(action: String?) {
-        Log.d("Wizeline", ">> $action")
         val address = bitcoinUri.getAddress(action)
         if (address != null) {
-            val label = cleanWalletName.execute(bitcoinUri.getLabel(action) ?: viewModel.name)
+            val label = cleanWalletName.execute(bitcoinUri.getLabel(action), viewModel.name)
             viewModel = viewModel.copy(address = address, name = label)
             analytics.trackVerifyQrCode(true)
         } else {
@@ -106,7 +104,7 @@ class CheckAddressPresenter @Inject constructor(
 
     fun save(name: String?) {
         view?.showSaveLoading()
-        viewModel = viewModel.copy(name = cleanWalletName.execute(name))
+        viewModel = viewModel.copy(name = cleanWalletName.execute(name, context.getString(R.string.app_unnamed)))
         subscriptions.add(addWallet.execute(viewModel.name, viewModel.address, balance)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

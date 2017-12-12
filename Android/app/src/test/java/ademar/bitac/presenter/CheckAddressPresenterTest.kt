@@ -42,6 +42,7 @@ class CheckAddressPresenterTest {
     private val action = "An action"
     private val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
     private val addressFailure = "An address failure message"
+    private val defaultWalletName = "An wallet name"
     private val invalidAddress = "an invalid address message"
     private val label = "a label"
     private val name = "a name"
@@ -66,6 +67,7 @@ class CheckAddressPresenterTest {
 
         whenever(mockContext.getString(R.string.check_address_qr_code_fail)).thenReturn(addressFailure)
         whenever(mockContext.getString(R.string.check_address_invalid_address)).thenReturn(invalidAddress)
+        whenever(mockContext.getString(R.string.app_unnamed)).thenReturn(defaultWalletName)
         whenever(mockStandardErrors.humanReadableMessage(mockException)).thenReturn(mockHumanException)
 
         hideTipsCount = 0
@@ -221,7 +223,7 @@ class CheckAddressPresenterTest {
 
         whenever(mockBitcoinUri.getAddress(action)).thenReturn(address)
         whenever(mockBitcoinUri.getLabel(action)).thenReturn(label)
-        whenever(mockCleanWalletName.execute(label)).thenReturn(label)
+        whenever(mockCleanWalletName.execute(label, "")).thenReturn(label)
 
         val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
         presenter.view = view
@@ -347,7 +349,7 @@ class CheckAddressPresenterTest {
             }
         }
 
-        whenever(mockCleanWalletName.execute(name)).thenReturn(cleanedName)
+        whenever(mockCleanWalletName.execute(name, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.complete())
 
         val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
@@ -367,7 +369,7 @@ class CheckAddressPresenterTest {
             }
         }
 
-        whenever(mockCleanWalletName.execute(null)).thenReturn(cleanedName)
+        whenever(mockCleanWalletName.execute(null, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.complete())
 
         val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
@@ -397,7 +399,7 @@ class CheckAddressPresenterTest {
             }
         }
 
-        whenever(mockCleanWalletName.execute(name)).thenReturn(cleanedName)
+        whenever(mockCleanWalletName.execute(name, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.error(mockException))
 
         val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
@@ -429,7 +431,7 @@ class CheckAddressPresenterTest {
             }
         }
 
-        whenever(mockCleanWalletName.execute(null)).thenReturn(cleanedName)
+        whenever(mockCleanWalletName.execute(null, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.error(mockException))
 
         val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
