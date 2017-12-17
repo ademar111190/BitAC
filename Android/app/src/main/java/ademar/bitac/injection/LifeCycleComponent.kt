@@ -7,7 +7,7 @@ import ademar.bitac.view.WalletViewHolder
 import dagger.Component
 
 @LifeCycleScope
-@Component(modules = arrayOf(LifeCycleModule::class), dependencies = arrayOf(AppComponent::class))
+@Component(modules = [LifeCycleModule::class], dependencies = [AppComponent::class])
 interface LifeCycleComponent {
 
     fun inject(obj: CheckAddressActivity)

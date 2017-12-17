@@ -7,10 +7,10 @@ import java.util.*
 @JsonObject
 class Address {
 
-    @JsonField(name = arrayOf("address"))
+    @JsonField(name = ["address"])
     var address: String? = null
 
-    @JsonField(name = arrayOf("final_balance"))
+    @JsonField(name = ["final_balance"])
     var balance: Long? = null
 
     override fun equals(other: Any?) = other is Address && address == other.address && balance == other.balance

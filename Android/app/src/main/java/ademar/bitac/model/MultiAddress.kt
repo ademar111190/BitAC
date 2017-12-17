@@ -6,7 +6,7 @@ import com.bluelinelabs.logansquare.annotation.JsonObject
 @JsonObject
 class MultiAddress {
 
-    @JsonField(name = arrayOf("addresses"))
+    @JsonField(name = ["addresses"])
     var addresses: List<Address>? = null
 
 }
