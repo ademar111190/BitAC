@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class Local @Inject constructor() {
+class WalletLocal @Inject constructor() {
 
     var wallets: HashMap<Long, Wallet>? = null
 

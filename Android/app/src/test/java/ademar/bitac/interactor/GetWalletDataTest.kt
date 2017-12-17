@@ -2,7 +2,7 @@ package ademar.bitac.interactor
 
 import ademar.bitac.R
 import ademar.bitac.model.StandardErrors
-import ademar.bitac.repository.datasource.Cloud
+import ademar.bitac.repository.datasource.WalletCloud
 import ademar.bitac.test.JsonTestUtils
 import ademar.bitac.test.fixture.RetrofitFixture
 import ademar.bitac.test.fixture.WalletFixture
@@ -23,7 +23,7 @@ class GetWalletDataTest {
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var mockRetrofit: Retrofit
-    private lateinit var mockCloud: Cloud
+    private lateinit var mockWalletCloud: WalletCloud
 
     @Before
     fun setup() {
@@ -36,7 +36,7 @@ class GetWalletDataTest {
         mockWebServer = MockWebServer()
         mockWebServer.start()
         mockRetrofit = RetrofitFixture.makeRetrofit(mockContext, mockWebServer)
-        mockCloud = mockRetrofit.create(Cloud::class.java)
+        mockWalletCloud = mockRetrofit.create(WalletCloud::class.java)
     }
 
     @After
@@ -50,7 +50,7 @@ class GetWalletDataTest {
                 .setResponseCode(200)
                 .setBody(JsonTestUtils.readJson("multi_address")))
 
-        GetWalletData(mockCloud, mockRetrofit)
+        GetWalletData(mockWalletCloud, mockRetrofit)
                 .execute(WalletFixture.makeModel())
                 .test()
                 .assertResult(WalletFixture.makeModel().copy(balance = 0L))
@@ -62,7 +62,7 @@ class GetWalletDataTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(200))
 
-        GetWalletData(mockCloud, mockRetrofit)
+        GetWalletData(mockWalletCloud, mockRetrofit)
                 .execute(WalletFixture.makeModel())
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -74,7 +74,7 @@ class GetWalletDataTest {
                 .setResponseCode(200)
                 .setBody(""))
 
-        GetWalletData(mockCloud, mockRetrofit)
+        GetWalletData(mockWalletCloud, mockRetrofit)
                 .execute(WalletFixture.makeModel())
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -85,7 +85,7 @@ class GetWalletDataTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(401))
 
-        GetWalletData(mockCloud, mockRetrofit)
+        GetWalletData(mockWalletCloud, mockRetrofit)
                 .execute(WalletFixture.makeModel())
                 .test()
                 .assertError(StandardErrors(mockContext).unauthorized)

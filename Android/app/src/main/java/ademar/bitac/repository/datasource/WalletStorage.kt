@@ -17,7 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class Storage @Inject constructor(
+class WalletStorage @Inject constructor(
 
         private val appDbHelper: AppDbHelper,
         private val contentValuesFactory: ContentValuesFactory

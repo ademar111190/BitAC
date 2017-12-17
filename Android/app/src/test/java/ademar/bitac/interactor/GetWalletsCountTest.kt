@@ -1,7 +1,7 @@
 package ademar.bitac.interactor
 
 import ademar.bitac.model.Wallet
-import ademar.bitac.repository.Repository
+import ademar.bitac.repository.WalletRepository
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
 import org.junit.Test
@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations
 
 class GetWalletsCountTest {
 
-    @Mock private lateinit var mockRepository: Repository
+    @Mock private lateinit var mockWalletRepository: WalletRepository
     @Mock private lateinit var mockWalletA: Wallet
     @Mock private lateinit var mockWalletB: Wallet
     @Mock private lateinit var mockWalletC: Wallet
@@ -22,8 +22,8 @@ class GetWalletsCountTest {
 
     @Test
     fun testEmpty() {
-        whenever(mockRepository.getWallets()).thenReturn(emptyList())
-        GetWalletsCount(mockRepository).execute()
+        whenever(mockWalletRepository.getWallets()).thenReturn(emptyList())
+        GetWalletsCount(mockWalletRepository).execute()
                 .test()
                 .assertResult(0)
                 .assertNoErrors()
@@ -31,8 +31,8 @@ class GetWalletsCountTest {
 
     @Test
     fun testSingle() {
-        whenever(mockRepository.getWallets()).thenReturn(listOf(mockWalletA))
-        GetWalletsCount(mockRepository).execute()
+        whenever(mockWalletRepository.getWallets()).thenReturn(listOf(mockWalletA))
+        GetWalletsCount(mockWalletRepository).execute()
                 .test()
                 .assertResult(1)
                 .assertNoErrors()
@@ -40,8 +40,8 @@ class GetWalletsCountTest {
 
     @Test
     fun testMultiple() {
-        whenever(mockRepository.getWallets()).thenReturn(listOf(mockWalletA, mockWalletB, mockWalletC))
-        GetWalletsCount(mockRepository).execute()
+        whenever(mockWalletRepository.getWallets()).thenReturn(listOf(mockWalletA, mockWalletB, mockWalletC))
+        GetWalletsCount(mockWalletRepository).execute()
                 .test()
                 .assertResult(3)
                 .assertNoErrors()

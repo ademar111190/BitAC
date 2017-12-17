@@ -1,7 +1,7 @@
 package ademar.bitac.interactor
 
 import ademar.bitac.model.Wallet
-import ademar.bitac.repository.Repository
+import ademar.bitac.repository.WalletRepository
 import com.nhaarman.mockito_kotlin.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
@@ -11,7 +11,7 @@ import org.mockito.MockitoAnnotations
 
 class AddWalletTest {
 
-    @Mock private lateinit var mockRepository: Repository
+    @Mock private lateinit var mockWalletRepository: WalletRepository
     @Mock private lateinit var mockWalletAddWatcher: WalletAddWatcher
     @Mock private lateinit var mockWallet: Wallet
 
@@ -33,29 +33,29 @@ class AddWalletTest {
             assertThat(wallet.address).isEqualTo(address)
             assertThat(wallet.balance).isEqualTo(balance)
             callCount++
-        }.whenever(mockRepository).addWallet(any())
+        }.whenever(mockWalletRepository).addWallet(any())
 
-        AddWallet(mockRepository, mockWalletAddWatcher)
+        AddWallet(mockWalletRepository, mockWalletAddWatcher)
                 .execute(name, address, balance)
                 .test()
                 .assertNoErrors()
 
         assertThat(callCount).isEqualTo(1)
         verify(mockWalletAddWatcher).notifyDataAdded(any())
-        verify(mockRepository).addWallet(any())
-        verifyNoMoreInteractions(mockRepository, mockWalletAddWatcher)
+        verify(mockWalletRepository).addWallet(any())
+        verifyNoMoreInteractions(mockWalletRepository, mockWalletAddWatcher)
     }
 
     @Test
     fun testExecuteWallet() {
-        AddWallet(mockRepository, mockWalletAddWatcher)
+        AddWallet(mockWalletRepository, mockWalletAddWatcher)
                 .execute(mockWallet)
                 .test()
                 .assertNoErrors()
 
         verify(mockWalletAddWatcher).notifyDataAdded(mockWallet)
-        verify(mockRepository).addWallet(mockWallet)
-        verifyNoMoreInteractions(mockRepository, mockWalletAddWatcher)
+        verify(mockWalletRepository).addWallet(mockWallet)
+        verifyNoMoreInteractions(mockWalletRepository, mockWalletAddWatcher)
     }
 
 }

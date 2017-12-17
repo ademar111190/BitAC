@@ -4,7 +4,7 @@ import ademar.bitac.App
 import ademar.bitac.BuildConfig
 import ademar.bitac.ext.standardErrors
 import ademar.bitac.model.StandardErrors
-import ademar.bitac.repository.datasource.Cloud
+import ademar.bitac.repository.datasource.WalletCloud
 import android.content.Context
 import com.crashlytics.android.answers.Answers
 import com.github.aurae.retrofit2.LoganSquareConverterFactory
@@ -66,8 +66,8 @@ class AppModule(
     }
 
     @Provides
-    fun provideCloud(retrofit: Retrofit): Cloud {
-        return retrofit.create(Cloud::class.java)
+    fun provideCloud(retrofit: Retrofit): WalletCloud {
+        return retrofit.create(WalletCloud::class.java)
     }
 
 }

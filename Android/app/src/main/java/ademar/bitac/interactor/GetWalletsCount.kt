@@ -1,17 +1,17 @@
 package ademar.bitac.interactor
 
-import ademar.bitac.repository.Repository
+import ademar.bitac.repository.WalletRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
 class GetWalletsCount @Inject constructor(
 
-        private val repository: Repository
+        private val walletRepository: WalletRepository
 
 ) {
 
     fun execute(): Single<Int> {
-        return Single.just(repository.getWallets().size)
+        return Single.just(walletRepository.getWallets().size)
     }
 
 }

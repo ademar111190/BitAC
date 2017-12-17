@@ -1,13 +1,13 @@
 package ademar.bitac.interactor
 
 import ademar.bitac.model.Wallet
-import ademar.bitac.repository.Repository
+import ademar.bitac.repository.WalletRepository
 import io.reactivex.Completable
 import javax.inject.Inject
 
 class AddWallet @Inject constructor(
 
-        private val repository: Repository,
+        private val walletRepository: WalletRepository,
         private val walletAddWatcher: WalletAddWatcher
 
 ) {
@@ -16,14 +16,14 @@ class AddWallet @Inject constructor(
         return Completable.fromAction {
             val time = System.nanoTime()
             val wallet = Wallet(time, name, address, balance, time, time)
-            repository.addWallet(wallet)
+            walletRepository.addWallet(wallet)
             walletAddWatcher.notifyDataAdded(wallet)
         }
     }
 
     fun execute(wallet: Wallet): Completable {
         return Completable.fromAction {
-            repository.addWallet(wallet)
+            walletRepository.addWallet(wallet)
             walletAddWatcher.notifyDataAdded(wallet)
         }
     }

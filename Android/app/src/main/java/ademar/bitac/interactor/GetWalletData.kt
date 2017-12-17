@@ -2,7 +2,7 @@ package ademar.bitac.interactor
 
 import ademar.bitac.ext.observeBody
 import ademar.bitac.model.Wallet
-import ademar.bitac.repository.datasource.Cloud
+import ademar.bitac.repository.datasource.WalletCloud
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -10,14 +10,14 @@ import javax.inject.Inject
 
 class GetWalletData @Inject constructor(
 
-        private val cloud: Cloud,
+        private val walletCloud: WalletCloud,
         private val retrofit: Retrofit
 
 ) {
 
     fun execute(wallet: Wallet): Single<Wallet> {
         return Observable.fromCallable {
-            cloud.getAddressBalances(wallet.address)
+            walletCloud.getAddressBalances(wallet.address)
         }.flatMap {
             retrofit.observeBody(it)
         }.filter {

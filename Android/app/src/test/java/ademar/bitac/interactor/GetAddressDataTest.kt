@@ -3,7 +3,7 @@ package ademar.bitac.interactor
 import ademar.bitac.R
 import ademar.bitac.model.Address
 import ademar.bitac.model.StandardErrors
-import ademar.bitac.repository.datasource.Cloud
+import ademar.bitac.repository.datasource.WalletCloud
 import ademar.bitac.test.JsonTestUtils
 import ademar.bitac.test.fixture.RetrofitFixture
 import android.content.Context
@@ -23,7 +23,7 @@ class GetAddressDataTest {
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var mockRetrofit: Retrofit
-    private lateinit var mockCloud: Cloud
+    private lateinit var mockWalletCloud: WalletCloud
 
     private val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
 
@@ -38,7 +38,7 @@ class GetAddressDataTest {
         mockWebServer = MockWebServer()
         mockWebServer.start()
         mockRetrofit = RetrofitFixture.makeRetrofit(mockContext, mockWebServer)
-        mockCloud = mockRetrofit.create(Cloud::class.java)
+        mockWalletCloud = mockRetrofit.create(WalletCloud::class.java)
     }
 
     @After
@@ -52,7 +52,7 @@ class GetAddressDataTest {
                 .setResponseCode(200)
                 .setBody(JsonTestUtils.readJson("multi_address")))
 
-        GetAddressData(mockCloud, mockRetrofit)
+        GetAddressData(mockWalletCloud, mockRetrofit)
                 .execute(address)
                 .test()
                 .assertResult(Address().apply {
@@ -67,7 +67,7 @@ class GetAddressDataTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(200))
 
-        GetAddressData(mockCloud, mockRetrofit)
+        GetAddressData(mockWalletCloud, mockRetrofit)
                 .execute(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -79,7 +79,7 @@ class GetAddressDataTest {
                 .setResponseCode(200)
                 .setBody(""))
 
-        GetAddressData(mockCloud, mockRetrofit)
+        GetAddressData(mockWalletCloud, mockRetrofit)
                 .execute(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -90,7 +90,7 @@ class GetAddressDataTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(401))
 
-        GetAddressData(mockCloud, mockRetrofit)
+        GetAddressData(mockWalletCloud, mockRetrofit)
                 .execute(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unauthorized)
