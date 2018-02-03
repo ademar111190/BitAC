@@ -14,7 +14,6 @@ class Address {
     var balance: Long? = null
 
     override fun equals(other: Any?) = other is Address && address == other.address && balance == other.balance
-
     override fun hashCode() = Objects.hash(address, balance)
 
 }

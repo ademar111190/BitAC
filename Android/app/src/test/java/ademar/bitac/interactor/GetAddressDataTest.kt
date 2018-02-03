@@ -1,99 +1,66 @@
 package ademar.bitac.interactor
 
-import ademar.bitac.R
-import ademar.bitac.model.Address
-import ademar.bitac.model.StandardErrors
-import ademar.bitac.repository.datasource.WalletCloud
-import ademar.bitac.test.JsonTestUtils
-import ademar.bitac.test.fixture.RetrofitFixture
-import android.content.Context
+import ademar.bitac.repository.WalletRepository
+import ademar.bitac.test.fixture.AddressFixture
+import ademar.bitac.test.fixture.MultiAddressFixture
 import com.nhaarman.mockito_kotlin.whenever
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
+import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import retrofit2.Retrofit
 
 class GetAddressDataTest {
 
-    @Mock private lateinit var mockContext: Context
-
-    private lateinit var mockWebServer: MockWebServer
-    private lateinit var mockRetrofit: Retrofit
-    private lateinit var mockWalletCloud: WalletCloud
+    @Mock private lateinit var mockWalletRepository: WalletRepository
 
     private val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-
-        whenever(mockContext.getString(R.string.error_message_unknown)).thenReturn("UNKNOWN")
-        whenever(mockContext.getString(R.string.error_message_unauthorized)).thenReturn("UNAUTHORIZED")
-        whenever(mockContext.getString(R.string.error_message_no_connection)).thenReturn("NO_CONNECTION")
-
-        mockWebServer = MockWebServer()
-        mockWebServer.start()
-        mockRetrofit = RetrofitFixture.makeRetrofit(mockContext, mockWebServer)
-        mockWalletCloud = mockRetrofit.create(WalletCloud::class.java)
-    }
-
-    @After
-    fun tearDown() {
-        mockWebServer.shutdown()
     }
 
     @Test
-    fun testExecute200() {
-        mockWebServer.enqueue(MockResponse()
-                .setResponseCode(200)
-                .setBody(JsonTestUtils.readJson("multi_address")))
+    fun testExecuteSuccess() {
+        whenever(mockWalletRepository.fetchMultiAddress(address)).thenReturn(Observable.just(MultiAddressFixture.makeModel()))
 
-        GetAddressData(mockWalletCloud, mockRetrofit)
+        GetAddressData(mockWalletRepository)
                 .execute(address)
                 .test()
-                .assertResult(Address().apply {
-                    address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
-                    balance = 0L
-                })
+                .assertResult(AddressFixture.makeModel())
                 .assertNoErrors()
     }
 
     @Test
-    fun testExecute200EmptyBody() {
-        mockWebServer.enqueue(MockResponse()
-                .setResponseCode(200))
+    fun testExecuteError() {
+        val error = Exception("An exception")
+        whenever(mockWalletRepository.fetchMultiAddress(address)).thenReturn(Observable.error(error))
 
-        GetAddressData(mockWalletCloud, mockRetrofit)
+        GetAddressData(mockWalletRepository)
                 .execute(address)
                 .test()
-                .assertError(StandardErrors(mockContext).unknown)
+                .assertError(error)
     }
 
     @Test
-    fun testExecute200BadBod() {
-        mockWebServer.enqueue(MockResponse()
-                .setResponseCode(200)
-                .setBody(""))
+    fun testExecuteEmpty() {
+        whenever(mockWalletRepository.fetchMultiAddress(address)).thenReturn(Observable.just(MultiAddressFixture.makeModel().apply { addresses = emptyList() }))
 
-        GetAddressData(mockWalletCloud, mockRetrofit)
+        GetAddressData(mockWalletRepository)
                 .execute(address)
                 .test()
-                .assertError(StandardErrors(mockContext).unknown)
+                .assertError(NoSuchElementException::class.java)
     }
 
     @Test
-    fun testExecute401() {
-        mockWebServer.enqueue(MockResponse()
-                .setResponseCode(401))
+    fun testExecuteNullAddress() {
+        whenever(mockWalletRepository.fetchMultiAddress(address)).thenReturn(Observable.just(MultiAddressFixture.makeModel().apply { addresses = null }))
 
-        GetAddressData(mockWalletCloud, mockRetrofit)
+        GetAddressData(mockWalletRepository)
                 .execute(address)
                 .test()
-                .assertError(StandardErrors(mockContext).unauthorized)
+                .assertError(NoSuchElementException::class.java)
     }
 
 }

@@ -1,12 +1,17 @@
 package ademar.bitac.repository
 
+import ademar.bitac.ext.observeBody
 import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.WalletAddWatcher
 import ademar.bitac.interactor.WalletChangeWatcher
 import ademar.bitac.interactor.WalletDeleteWatcher
+import ademar.bitac.model.MultiAddress
 import ademar.bitac.model.Wallet
+import ademar.bitac.repository.datasource.WalletCloud
 import ademar.bitac.repository.datasource.WalletLocal
 import ademar.bitac.repository.datasource.WalletStorage
+import io.reactivex.Observable
+import retrofit2.Retrofit
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,6 +21,8 @@ class WalletRepository @Inject constructor(
 
         private val walletLocal: WalletLocal,
         private val walletStorage: WalletStorage,
+        private val walletCloud: WalletCloud,
+        private val retrofit: Retrofit,
         walletAddWatcher: WalletAddWatcher,
         walletChangeWatcher: WalletChangeWatcher,
         walletDeleteWatcher: WalletDeleteWatcher,
@@ -58,6 +65,14 @@ class WalletRepository @Inject constructor(
 
     fun deleteWallet(id: Long) {
         walletStorage.deleteWallet(id)
+    }
+
+    fun fetchMultiAddress(address: String): Observable<MultiAddress> {
+        return Observable.fromCallable {
+            walletCloud.getAddressBalances(address)
+        }.flatMap {
+            retrofit.observeBody(it)
+        }
     }
 
 }
