@@ -1,6 +1,5 @@
 package ademar.bitac.sqlite
 
-
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -27,13 +26,13 @@ class AppDbHelper @Inject constructor(context: Context) : SQLiteOpenHelper(conte
 
     companion object {
 
-        val TABLE_WALLET = "wallet"
-        val COLUMN_WALLET_ID = "id"
-        val COLUMN_WALLET_ADDRESS = "address"
-        val COLUMN_WALLET_NAME = "name"
-        val COLUMN_WALLET_BALANCE = "balance"
-        val COLUMN_WALLET_CREATION = "creation"
-        val COLUMN_WALLET_EDITION = "edition"
+        const val TABLE_WALLET = "wallet"
+        const val COLUMN_WALLET_ID = "id"
+        const val COLUMN_WALLET_ADDRESS = "address"
+        const val COLUMN_WALLET_NAME = "name"
+        const val COLUMN_WALLET_BALANCE = "balance"
+        const val COLUMN_WALLET_CREATION = "creation"
+        const val COLUMN_WALLET_EDITION = "edition"
 
     }
 

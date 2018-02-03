@@ -22,7 +22,8 @@ abstract class HomeActivity : AppCompatActivity(), HomeView {
 
     private val adapter = WalletAdapter()
 
-    @Inject lateinit var presenter: HomePresenter
+    @Inject
+    lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ abstract class HomeActivity : AppCompatActivity(), HomeView {
                 R.id.theme_ada -> presenter.changeTheme(Theme.ADA)
                 R.id.about -> presenter.about()
                 else -> null
-            } is Unit
+            } != null
         }
 
         reload.setOnClickListener { presenter.reload() }

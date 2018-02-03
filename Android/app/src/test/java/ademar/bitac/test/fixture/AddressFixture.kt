@@ -4,8 +4,8 @@ import ademar.bitac.model.Address
 
 object AddressFixture {
 
-    val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
-    val balance = 123456789L
+    const val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
+    const val balance = 123456789L
 
     fun makeModel() = Address().apply {
         address = AddressFixture.address

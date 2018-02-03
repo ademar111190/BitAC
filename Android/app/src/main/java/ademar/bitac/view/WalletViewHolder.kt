@@ -47,7 +47,7 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     }
                     R.id.delete -> delete()
                     else -> null
-                } is Unit
+                } != null
             }
             menu.show()
         }
