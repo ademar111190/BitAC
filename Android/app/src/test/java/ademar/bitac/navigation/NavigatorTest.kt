@@ -28,10 +28,10 @@ class NavigatorTest {
 
     @Test
     fun testLaunchAboutDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.ELEVEN)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchAbout()
         verify(mockIntent).setClass(mockActivity, AboutActivity::class.java)
-        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.ELEVEN)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -68,10 +68,10 @@ class NavigatorTest {
 
     @Test
     fun testLaunchCheckAddressDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.ELEVEN)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchCheckAddress()
         verify(mockIntent).setClass(mockActivity, CheckAddressActivity::class.java)
-        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.ELEVEN)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -108,10 +108,10 @@ class NavigatorTest {
 
     @Test
     fun testLaunchHomeDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.ELEVEN)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome()
         verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
-        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.ELEVEN)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }

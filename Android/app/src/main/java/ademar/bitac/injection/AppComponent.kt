@@ -23,7 +23,6 @@ interface AppComponent {
     val getTheme: GetTheme
     val walletRepository: WalletRepository
     val retrofit: Retrofit
-    val setTheme: SetTheme
     val standardErrors: StandardErrors
     val walletAddWatcher: WalletAddWatcher
     val walletChangeWatcher: WalletChangeWatcher

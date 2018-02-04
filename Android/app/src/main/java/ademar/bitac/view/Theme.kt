@@ -10,7 +10,6 @@ enum class Theme constructor(
 
 ) {
 
-    DEFAULT("default", R.style.AppElevenTheme, R.style.AppDialogElevenTheme),
     LIGHT("light", R.style.AppLightTheme, R.style.AppDialogLightTheme),
     DARK("dark", R.style.AppDarkTheme, R.style.AppDialogDarkTheme),
     DOGE("doge", R.style.AppDogeTheme, R.style.AppDialogDogeTheme),
@@ -18,7 +17,7 @@ enum class Theme constructor(
     ADA("ada", R.style.AppAdaTheme, R.style.AppDialogAdaTheme);
 
     companion object {
-        fun getTheme(tag: String) = Theme.values().firstOrNull { it.tag == tag } ?: Theme.DEFAULT
+        fun getTheme(tag: String) = Theme.values().firstOrNull { it.tag == tag } ?: Theme.ELEVEN
     }
 
 }
