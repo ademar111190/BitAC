@@ -1,6 +1,7 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
+import ademar.bitac.ext.getTheme
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,9 +10,10 @@ import android.text.Html.fromHtml
 import android.text.method.LinkMovementMethod
 import kotlinx.android.synthetic.main.activity_about.*
 
-abstract class AboutActivity : AppCompatActivity() {
+class AboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(intent.getTheme().resTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
         toolbar.setNavigationOnClickListener { finish() }
@@ -25,11 +27,5 @@ abstract class AboutActivity : AppCompatActivity() {
         }
         text.movementMethod = LinkMovementMethod.getInstance()
     }
-
-    class AboutActivityLight : AboutActivity()
-    class AboutActivityDark : AboutActivity()
-    class AboutActivityDoge : AboutActivity()
-    class AboutActivityEleven : AboutActivity()
-    class AboutActivityAda : AboutActivity()
 
 }

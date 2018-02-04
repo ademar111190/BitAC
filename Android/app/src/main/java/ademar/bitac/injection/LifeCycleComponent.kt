@@ -1,9 +1,6 @@
 package ademar.bitac.injection
 
-import ademar.bitac.view.CheckAddressActivity
-import ademar.bitac.view.HomeActivity
-import ademar.bitac.view.StartActivity
-import ademar.bitac.view.WalletViewHolder
+import ademar.bitac.view.*
 import dagger.Component
 
 @LifeCycleScope
@@ -12,6 +9,7 @@ interface LifeCycleComponent {
 
     fun inject(obj: CheckAddressActivity)
     fun inject(obj: HomeActivity)
+    fun inject(obj: SettingsFragment)
     fun inject(obj: StartActivity)
     fun inject(obj: WalletViewHolder)
 

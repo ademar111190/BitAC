@@ -30,7 +30,6 @@ class HomePresenterTest {
     @Mock private lateinit var mockWalletMapper: WalletMapper
     @Mock private lateinit var mockAddWallet: AddWallet
     @Mock private lateinit var mockGetWalletsCount: GetWalletsCount
-    @Mock private lateinit var mockSetTheme: SetTheme
     @Mock private lateinit var mockGetTheme: GetTheme
     @Mock private lateinit var mockNavigator: Navigator
     @Mock private lateinit var mockWalletAddWatcher: WalletAddWatcher
@@ -98,7 +97,7 @@ class HomePresenterTest {
         val view = object : StubHomeView() {
         }
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         verify(mockWalletAddWatcher).observe()
@@ -108,7 +107,7 @@ class HomePresenterTest {
 
     @Test
     fun testDetach() {
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = null
     }
 
@@ -128,7 +127,7 @@ class HomePresenterTest {
 
         whenever(mockWalletAddWatcher.observe()).thenReturn(Observable.just(walletA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         assertThat(showContentCount).isEqualTo(2)
@@ -143,7 +142,7 @@ class HomePresenterTest {
 
         whenever(mockWalletAddWatcher.observe()).thenReturn(Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         verify(mockAnalytics).trackError(mockErrorA)
@@ -165,7 +164,7 @@ class HomePresenterTest {
 
         whenever(mockWalletChangeWatcher.observe()).thenReturn(Observable.just(walletA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         assertThat(showContentCount).isEqualTo(2)
@@ -180,7 +179,7 @@ class HomePresenterTest {
 
         whenever(mockWalletChangeWatcher.observe()).thenReturn(Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         verify(mockAnalytics).trackError(mockErrorA)
@@ -194,7 +193,7 @@ class HomePresenterTest {
 
         whenever(mockWalletDeleteWatcher.observe()).thenReturn(Observable.just(WalletFixture.id))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
     }
 
@@ -206,7 +205,7 @@ class HomePresenterTest {
 
         whenever(mockWalletDeleteWatcher.observe()).thenReturn(Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
 
         verify(mockAnalytics).trackError(mockErrorA)
@@ -226,7 +225,7 @@ class HomePresenterTest {
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(1))
         whenever(mockWalletDeleteWatcher.observe()).thenReturn(Observable.just(WalletFixture.id))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.loadData()
         presenter.view = view
 
@@ -253,7 +252,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.error(mockErrorA))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.error(mockErrorB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
 
@@ -279,7 +278,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.empty())
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(0))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
 
@@ -308,7 +307,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.just(walletA))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(1))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
 
@@ -338,7 +337,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.just(walletA, walletB))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(2))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
 
@@ -373,7 +372,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.just(walletA, walletB))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(2))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
         presenter.loadData()
@@ -415,7 +414,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.just(walletA, walletB), Observable.error(mockErrorA))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(2), Single.error(mockErrorB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
         presenter.loadData()
@@ -463,7 +462,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.just(walletA, walletB))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.error(mockErrorB), Single.just(2))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
         presenter.loadData()
@@ -498,7 +497,7 @@ class HomePresenterTest {
         whenever(mockGetWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.error(mockErrorA))
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.error(mockErrorB), Single.error(mockErrorB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.loadData()
         presenter.loadData()
@@ -529,7 +528,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
 
@@ -554,7 +553,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.empty())
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
 
@@ -582,7 +581,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
 
@@ -611,7 +610,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
 
@@ -645,7 +644,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
         presenter.reload()
@@ -686,7 +685,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB), Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
         presenter.reload()
@@ -732,7 +731,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
         presenter.reload()
@@ -765,7 +764,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.reload()
         presenter.reload()
@@ -796,7 +795,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
 
@@ -821,7 +820,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.empty())
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
 
@@ -849,7 +848,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
 
@@ -878,7 +877,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
 
@@ -912,7 +911,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
         presenter.refresh()
@@ -953,7 +952,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.just(walletA, walletB), Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
         presenter.refresh()
@@ -999,7 +998,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.just(walletA, walletB))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
         presenter.refresh()
@@ -1032,7 +1031,7 @@ class HomePresenterTest {
 
         whenever(mockUpdateWallets.execute()).thenReturn(Observable.error(mockErrorA), Observable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.view = view
         presenter.refresh()
         presenter.refresh()
@@ -1046,7 +1045,7 @@ class HomePresenterTest {
 
     @Test
     fun testAbout() {
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.about()
 
         verify(mockNavigator).launchAbout()
@@ -1055,35 +1054,17 @@ class HomePresenterTest {
 
     @Test
     fun testCheckAddress() {
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.checkAddress()
 
         verify(mockNavigator).launchCheckAddress()
     }
 
     @Test
-    fun testChangeThemeSameTheme() {
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
-        presenter.changeTheme(mockTheme)
-
-        verify(mockAnalytics).trackThemeChange(mockTheme)
-    }
-
-    @Test
-    fun testChangeThemeNewTheme() {
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
-        presenter.changeTheme(mockThemeNew)
-
-        verify(mockSetTheme).execute(mockThemeNew)
-        verify(mockNavigator).launchHomeWithNewTheme(mockThemeNew)
-        verify(mockAnalytics).trackThemeChange(mockThemeNew)
-    }
-
-    @Test
     fun testUndoDeleteSuccess() {
         whenever(mockAddWallet.execute(walletA)).thenReturn(Completable.complete())
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.undoDelete(walletViewModelA)
 
         verify(mockAddWallet).execute(walletA)
@@ -1094,11 +1075,20 @@ class HomePresenterTest {
     fun testUndoDeleteError() {
         whenever(mockAddWallet.execute(walletA)).thenReturn(Completable.error(mockErrorA))
 
-        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockSetTheme, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
         presenter.undoDelete(walletViewModelA)
 
         verify(mockAnalytics).trackUndoDeleteAddress()
         verify(mockAnalytics).trackError(mockErrorA)
+    }
+
+    @Test
+    fun testSettings() {
+        val presenter = HomePresenter(mockGetWallets, mockUpdateWallets, mockWalletMapper, mockAddWallet, mockGetWalletsCount, mockGetTheme, mockNavigator, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockStandardErrors, mockAnalytics)
+        presenter.settings()
+
+        verify(mockNavigator).launchSettings()
+        verify(mockAnalytics).trackSettings()
     }
 
 }

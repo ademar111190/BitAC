@@ -4,7 +4,6 @@ import ademar.bitac.interactor.*
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.model.Wallet
 import ademar.bitac.navigation.Navigator
-import ademar.bitac.view.Theme
 import ademar.bitac.viewmodel.WalletMapper
 import ademar.bitac.viewmodel.WalletViewModel
 import io.reactivex.Observable
@@ -20,7 +19,6 @@ class HomePresenter @Inject constructor(
         private val walletMapper: WalletMapper,
         private val addWallet: AddWallet,
         private val getWalletsCount: GetWalletsCount,
-        private val setTheme: SetTheme,
         private val getTheme: GetTheme,
         private val navigator: Navigator,
         private val walletAddWatcher: WalletAddWatcher,
@@ -89,16 +87,13 @@ class HomePresenter @Inject constructor(
         analytics.trackAbout()
     }
 
-    fun checkAddress() {
-        navigator.launchCheckAddress()
+    fun settings() {
+        navigator.launchSettings()
+        analytics.trackSettings()
     }
 
-    fun changeTheme(theme: Theme) {
-        if (getTheme.execute() != theme) {
-            setTheme.execute(theme)
-            navigator.launchHomeWithNewTheme(theme)
-        }
-        analytics.trackThemeChange(theme)
+    fun checkAddress() {
+        navigator.launchCheckAddress()
     }
 
     fun undoDelete(viewModel: WalletViewModel) {

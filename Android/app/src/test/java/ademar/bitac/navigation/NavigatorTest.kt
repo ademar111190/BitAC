@@ -1,11 +1,7 @@
 package ademar.bitac.navigation
 
-import ademar.bitac.R
 import ademar.bitac.interactor.GetTheme
-import ademar.bitac.view.AboutActivity
-import ademar.bitac.view.CheckAddressActivity
-import ademar.bitac.view.HomeActivity
-import ademar.bitac.view.Theme
+import ademar.bitac.view.*
 import android.app.Activity
 import android.content.Intent
 import com.nhaarman.mockito_kotlin.verify
@@ -22,6 +18,7 @@ class NavigatorTest {
     @Mock private lateinit var mockIntentFactory: IntentFactory
     @Mock private lateinit var mockIntent: Intent
     @Mock private lateinit var mockGetTheme: GetTheme
+    @Mock private lateinit var mockTheme: Theme
 
     @Before
     fun setup() {
@@ -31,9 +28,10 @@ class NavigatorTest {
 
     @Test
     fun testLaunchAboutDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchAbout()
-        verify(mockIntent).setClass(mockActivity, AboutActivity.AboutActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, AboutActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -42,7 +40,8 @@ class NavigatorTest {
     fun testLaunchAboutLight() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchAbout()
-        verify(mockIntent).setClass(mockActivity, AboutActivity.AboutActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, AboutActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.LIGHT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -51,7 +50,8 @@ class NavigatorTest {
     fun testLaunchAboutDark() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DARK)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchAbout()
-        verify(mockIntent).setClass(mockActivity, AboutActivity.AboutActivityDark::class.java)
+        verify(mockIntent).setClass(mockActivity, AboutActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DARK)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -60,16 +60,18 @@ class NavigatorTest {
     fun testLaunchAboutDoge() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DOGE)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchAbout()
-        verify(mockIntent).setClass(mockActivity, AboutActivity.AboutActivityDoge::class.java)
+        verify(mockIntent).setClass(mockActivity, AboutActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DOGE)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
 
     @Test
     fun testLaunchCheckAddressDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchCheckAddress()
-        verify(mockIntent).setClass(mockActivity, CheckAddressActivity.CheckAddressActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, CheckAddressActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -78,7 +80,8 @@ class NavigatorTest {
     fun testLaunchCheckAddressLight() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchCheckAddress()
-        verify(mockIntent).setClass(mockActivity, CheckAddressActivity.CheckAddressActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, CheckAddressActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.LIGHT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -87,7 +90,8 @@ class NavigatorTest {
     fun testLaunchCheckAddressDark() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DARK)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchCheckAddress()
-        verify(mockIntent).setClass(mockActivity, CheckAddressActivity.CheckAddressActivityDark::class.java)
+        verify(mockIntent).setClass(mockActivity, CheckAddressActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DARK)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -96,16 +100,18 @@ class NavigatorTest {
     fun testLaunchCheckAddressDoge() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DOGE)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchCheckAddress()
-        verify(mockIntent).setClass(mockActivity, CheckAddressActivity.CheckAddressActivityDoge::class.java)
+        verify(mockIntent).setClass(mockActivity, CheckAddressActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DOGE)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
 
     @Test
     fun testLaunchHomeDefault() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
+        whenever(mockGetTheme.execute()).thenReturn(Theme.DEFAULT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome()
-        verify(mockIntent).setClass(mockActivity, HomeActivity.HomeActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DEFAULT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -114,7 +120,8 @@ class NavigatorTest {
     fun testLaunchHomeLight() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome()
-        verify(mockIntent).setClass(mockActivity, HomeActivity.HomeActivityLight::class.java)
+        verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.LIGHT)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -123,7 +130,8 @@ class NavigatorTest {
     fun testLaunchHomeDark() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DARK)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome()
-        verify(mockIntent).setClass(mockActivity, HomeActivity.HomeActivityDark::class.java)
+        verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DARK)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
@@ -132,19 +140,27 @@ class NavigatorTest {
     fun testLaunchHomeDoge() {
         whenever(mockGetTheme.execute()).thenReturn(Theme.DOGE)
         Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome()
-        verify(mockIntent).setClass(mockActivity, HomeActivity.HomeActivityDoge::class.java)
+        verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
+        verify(mockIntent).putExtra(EXTRA_THEME, Theme.DOGE)
         verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
 
     @Test
-    fun testLaunchHomeWithNewTheme() {
-        whenever(mockGetTheme.execute()).thenReturn(Theme.LIGHT)
-        Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHomeWithNewTheme(Theme.DARK)
-        verify(mockIntent).setClass(mockActivity, HomeActivity.HomeActivityDark::class.java)
+    fun testLaunchHomeWithTheme() {
+        Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchHome(mockTheme)
+        verify(mockIntent).setClass(mockActivity, HomeActivity::class.java)
         verify(mockActivity).startActivity(mockIntent)
-        verify(mockActivity).overridePendingTransition(R.anim.change_theme_in, R.anim.change_theme_out)
-        verify(mockActivity).finish()
+        verify(mockIntent).putExtra(EXTRA_THEME, mockTheme)
+        verify(mockActivity).finishAffinity()
+        verifyNoMoreInteractions(mockActivity, mockIntent)
+    }
+
+    @Test
+    fun testLaunchSettings() {
+        Navigator(mockActivity, mockIntentFactory, mockGetTheme).launchSettings()
+        verify(mockIntent).setClass(mockActivity, SettingsActivity::class.java)
+        verify(mockActivity).startActivity(mockIntent)
         verifyNoMoreInteractions(mockActivity, mockIntent)
     }
 

@@ -2,6 +2,7 @@ package ademar.bitac.view
 
 import ademar.bitac.R
 import ademar.bitac.ext.forceAnimation
+import ademar.bitac.ext.getTheme
 import ademar.bitac.injection.Injector
 import ademar.bitac.presenter.HomePresenter
 import ademar.bitac.presenter.HomeView
@@ -17,15 +18,14 @@ import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-
-abstract class HomeActivity : AppCompatActivity(), HomeView {
+class HomeActivity : AppCompatActivity(), HomeView {
 
     private val adapter = WalletAdapter()
 
-    @Inject
-    lateinit var presenter: HomePresenter
+    @Inject lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(intent.getTheme().resTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
@@ -38,12 +38,7 @@ abstract class HomeActivity : AppCompatActivity(), HomeView {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.reload -> presenter.reload()
-                R.id.add -> presenter.checkAddress()
-                R.id.theme_dark -> presenter.changeTheme(Theme.DARK)
-                R.id.theme_light -> presenter.changeTheme(Theme.LIGHT)
-                R.id.theme_doge -> presenter.changeTheme(Theme.DOGE)
-                R.id.theme_eleven -> presenter.changeTheme(Theme.ELEVEN)
-                R.id.theme_ada -> presenter.changeTheme(Theme.ADA)
+                R.id.settings -> presenter.settings()
                 R.id.about -> presenter.about()
                 else -> null
             } != null
@@ -124,11 +119,5 @@ abstract class HomeActivity : AppCompatActivity(), HomeView {
                 .forceAnimation()
                 .show()
     }
-
-    class HomeActivityLight : HomeActivity()
-    class HomeActivityDark : HomeActivity()
-    class HomeActivityDoge : HomeActivity()
-    class HomeActivityEleven : HomeActivity()
-    class HomeActivityAda : HomeActivity()
 
 }

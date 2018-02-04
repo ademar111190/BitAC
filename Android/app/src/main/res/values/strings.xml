@@ -10,11 +10,14 @@
     <string name="app_undo">Undo</string>
     <string name="app_unnamed">Unnamed</string>
 
-    <string name="app_use_theme_dark">Uses dark theme</string>
-    <string name="app_use_theme_light">Uses light theme</string>
-    <string name="app_use_theme_doge">Uses doge theme</string>
-    <string name="app_use_theme_eleven">Uses 11 theme</string>
-    <string name="app_use_theme_ada">Uses ada theme</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_summary">Change theme</string>
+    <string name="settings_theme_dark">Dark theme</string>
+    <string name="settings_theme_light">Light theme</string>
+    <string name="settings_theme_doge">Doge theme</string>
+    <string name="settings_theme_eleven">11 theme</string>
+    <string name="settings_theme_ada">Ada theme</string>
 
     <string name="home_empty_hint">Welcome to Bitcoin Address Checker App (BitAC).\n\nYou can click on Check Address any time you want to see how many bitcoins an address has.\n\nAll of your saved addresses will appear here for easy access.\n\nEnjoy the app!</string>
     <string name="home_deleted_address_message">The address %s was deleted</string>

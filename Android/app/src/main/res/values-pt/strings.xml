@@ -10,11 +10,14 @@
     <string name="app_undo">Desfazer</string>
     <string name="app_unnamed">Sem nome</string>
 
-    <string name="app_use_theme_dark">Usar tema escuro</string>
-    <string name="app_use_theme_light">Usar tema claro</string>
-    <string name="app_use_theme_doge">Usar tema doge</string>
-    <string name="app_use_theme_eleven">Usar tema 11</string>
-    <string name="app_use_theme_ada">Usar tema ada</string>
+    <string name="settings_title">Preferências</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_summary">Mudar tema</string>
+    <string name="settings_theme_dark">Tema escuro</string>
+    <string name="settings_theme_light">Tema claro</string>
+    <string name="settings_theme_doge">Tema doge</string>
+    <string name="settings_theme_eleven">Tema 11</string>
+    <string name="settings_theme_ada">Tema ada</string>
 
     <string name="home_empty_hint">Bem-vindo ao aplicativo Verificador de Endereço Bitcoin (BitAC).\n\nVocê pode clicar no botão Verificar Endereço a qualquer momento para ver quantos bitcoins um endereço possui, após isso você pode salvar o endereço para rapidamente verifica-lo novamente no futuro.\n\nTodos os endereços salvos aparecerão aqui, aproveite o aplicativo.</string>
     <string name="home_deleted_address_message">O endereço %s foi deletado</string>

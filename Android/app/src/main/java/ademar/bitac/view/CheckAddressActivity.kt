@@ -2,6 +2,7 @@ package ademar.bitac.view
 
 import ademar.bitac.R
 import ademar.bitac.ext.addOnAnimationEndListener
+import ademar.bitac.ext.getTheme
 import ademar.bitac.ext.setActionNext
 import ademar.bitac.ext.setActionSend
 import ademar.bitac.injection.Injector
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.check_address_input.*
 import kotlinx.android.synthetic.main.check_address_output.*
 import javax.inject.Inject
 
-abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
+class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
 
     @Inject lateinit var presenter: CheckAddressPresenter
 
@@ -43,6 +44,7 @@ abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(intent.getTheme().resDialogTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_address)
 
@@ -174,12 +176,6 @@ abstract class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
         input_hint.visibility = View.GONE
         output_hint.visibility = View.GONE
     }
-
-    class CheckAddressActivityLight : CheckAddressActivity()
-    class CheckAddressActivityDark : CheckAddressActivity()
-    class CheckAddressActivityDoge : CheckAddressActivity()
-    class CheckAddressActivityEleven : CheckAddressActivity()
-    class CheckAddressActivityAda : CheckAddressActivity()
 
     private enum class ScreenStatus {
         INITIAL, INPUT, SAVE

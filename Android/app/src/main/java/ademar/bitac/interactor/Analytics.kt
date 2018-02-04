@@ -80,6 +80,10 @@ class Analytics @Inject constructor(
         answers.logCustom(CustomEvent("About"))
     }
 
+    fun trackSettings() {
+        answers.logCustom(CustomEvent("Settings"))
+    }
+
     enum class ReloadActionSource(val tag: String) {
         MENU("menu"), SWIPE("swipe")
     }

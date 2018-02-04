@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="themes_human">
+        <item>@string/settings_theme_light</item>
+        <item>@string/settings_theme_dark</item>
+        <item>@string/settings_theme_doge</item>
+        <item>@string/settings_theme_eleven</item>
+        <item>@string/settings_theme_ada</item>
+    </string-array>
+
+    <string-array name="themes" translatable="false">
+        <item>light</item>
+        <item>dark</item>
+        <item>doge</item>
+        <item>eleven</item>
+        <item>ada</item>
+    </string-array>
+
+</resources>
