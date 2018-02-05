@@ -7,11 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class GetTheme @Inject constructor(
-
-        private val context: Context
-
-) {
+class GetTheme @Inject constructor(context: Context) {
 
     var preference = PreferenceManager.getDefaultSharedPreferences(context)
 

@@ -19,8 +19,10 @@ interface AppComponent {
     val walletCloud: WalletCloud
     val context: Context
     val copyToClipboard: CopyToClipboard
-    val deleteWallet: DeleteWallet
     val getTheme: GetTheme
+    val getCurrencies: GetCurrencies
+    val getEnabledProvider: GetEnabledProviders
+    val getProviders: GetProviders
     val walletRepository: WalletRepository
     val retrofit: Retrofit
     val standardErrors: StandardErrors
