@@ -1,6 +1,14 @@
 package ademar.bitac.injection
 
-import ademar.bitac.interactor.*
+import ademar.bitac.interactor.Analytics
+import ademar.bitac.interactor.CopyToClipboard
+import ademar.bitac.interactor.GetTheme
+import ademar.bitac.interactor.provider.GetCurrencies
+import ademar.bitac.interactor.provider.GetEnabledProviders
+import ademar.bitac.interactor.provider.GetProviders
+import ademar.bitac.interactor.wallet.WalletAddWatcher
+import ademar.bitac.interactor.wallet.WalletChangeWatcher
+import ademar.bitac.interactor.wallet.WalletDeleteWatcher
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.repository.WalletRepository
 import ademar.bitac.repository.datasource.WalletCloud

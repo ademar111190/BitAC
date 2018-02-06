@@ -1,6 +1,8 @@
 package ademar.bitac.presenter
 
-import ademar.bitac.interactor.*
+import ademar.bitac.interactor.Analytics
+import ademar.bitac.interactor.GetTheme
+import ademar.bitac.interactor.wallet.*
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.navigation.Navigator
 import ademar.bitac.test.fixture.WalletFixture

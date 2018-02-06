@@ -6,7 +6,7 @@ import ademar.bitac.injection.DaggerLifeCycleComponent
 import ademar.bitac.injection.LifeCycleModule
 import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.CopyToClipboard
-import ademar.bitac.interactor.DeleteWallet
+import ademar.bitac.interactor.wallet.DeleteWallet
 import ademar.bitac.viewmodel.WalletViewModel
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView

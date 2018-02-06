@@ -1,5 +1,6 @@
 package ademar.bitac.navigation
 
+import ademar.bitac.ext.EXTRA_THEME
 import ademar.bitac.interactor.GetTheme
 import ademar.bitac.view.*
 import android.app.Activity
@@ -39,5 +40,3 @@ class Navigator @Inject constructor(
     })
 
 }
-
-const val EXTRA_THEME = "EXTRA_THEME"

@@ -2,9 +2,9 @@ package ademar.bitac.repository
 
 import ademar.bitac.R
 import ademar.bitac.interactor.Analytics
-import ademar.bitac.interactor.WalletAddWatcher
-import ademar.bitac.interactor.WalletChangeWatcher
-import ademar.bitac.interactor.WalletDeleteWatcher
+import ademar.bitac.interactor.wallet.WalletAddWatcher
+import ademar.bitac.interactor.wallet.WalletChangeWatcher
+import ademar.bitac.interactor.wallet.WalletDeleteWatcher
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.repository.datasource.WalletCloud
 import ademar.bitac.repository.datasource.WalletLocal

@@ -1,7 +1,12 @@
 package ademar.bitac.presenter
 
 import ademar.bitac.R
-import ademar.bitac.interactor.*
+import ademar.bitac.interactor.Analytics
+import ademar.bitac.interactor.BitcoinUri
+import ademar.bitac.interactor.wallet.AddWallet
+import ademar.bitac.interactor.wallet.CleanWalletName
+import ademar.bitac.interactor.wallet.GetAddressData
+import ademar.bitac.interactor.wallet.GetWalletsCount
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.viewmodel.WalletMapper
 import ademar.bitac.viewmodel.WalletViewModel

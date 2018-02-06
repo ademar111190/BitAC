@@ -2,9 +2,9 @@ package ademar.bitac.repository
 
 import ademar.bitac.ext.observeBody
 import ademar.bitac.interactor.Analytics
-import ademar.bitac.interactor.WalletAddWatcher
-import ademar.bitac.interactor.WalletChangeWatcher
-import ademar.bitac.interactor.WalletDeleteWatcher
+import ademar.bitac.interactor.wallet.WalletAddWatcher
+import ademar.bitac.interactor.wallet.WalletChangeWatcher
+import ademar.bitac.interactor.wallet.WalletDeleteWatcher
 import ademar.bitac.model.MultiAddress
 import ademar.bitac.model.Wallet
 import ademar.bitac.repository.datasource.WalletCloud
@@ -71,8 +71,8 @@ class WalletRepository @Inject constructor(
         return Observable.fromCallable {
             walletCloud.getAddressBalances(address)
         }.flatMap {
-            retrofit.observeBody(it)
-        }
+                    retrofit.observeBody(it)
+                }
     }
 
 }

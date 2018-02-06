@@ -1,5 +1,7 @@
 package ademar.bitac.interactor
 
+import ademar.bitac.model.Currency
+import ademar.bitac.model.Provider
 import ademar.bitac.view.Theme
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.answers.Answers
@@ -82,6 +84,27 @@ class Analytics @Inject constructor(
 
     fun trackSettings() {
         answers.logCustom(CustomEvent("Settings"))
+    }
+
+    fun trackAddConversion() {
+        answers.logCustom(CustomEvent("AddConversionFirstStep"))
+    }
+
+    fun trackAddConversion(currency: Currency) {
+        answers.logCustom(CustomEvent("AddConversionSecondStep")
+                .putCustomAttribute("currency", currency.id))
+    }
+
+    fun trackAddConversion(currency: Currency, provider: Provider) {
+        answers.logCustom(CustomEvent("AddConversionThirdStep")
+                .putCustomAttribute("currency", currency.id)
+                .putCustomAttribute("provider", provider.id))
+    }
+
+    fun trackRemoveConversion(currency: Currency, provider: Provider) {
+        answers.logCustom(CustomEvent("RemoveConversion")
+                .putCustomAttribute("currency", currency.id)
+                .putCustomAttribute("provider", provider.id))
     }
 
     enum class ReloadActionSource(val tag: String) {

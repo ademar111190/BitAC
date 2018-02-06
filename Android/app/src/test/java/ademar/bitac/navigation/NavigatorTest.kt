@@ -1,5 +1,6 @@
 package ademar.bitac.navigation
 
+import ademar.bitac.ext.EXTRA_THEME
 import ademar.bitac.interactor.GetTheme
 import ademar.bitac.view.*
 import android.app.Activity

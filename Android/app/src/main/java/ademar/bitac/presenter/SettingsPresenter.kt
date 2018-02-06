@@ -1,7 +1,8 @@
 package ademar.bitac.presenter
 
 import ademar.bitac.R
-import ademar.bitac.interactor.*
+import ademar.bitac.interactor.Analytics
+import ademar.bitac.interactor.provider.*
 import ademar.bitac.model.Currency
 import ademar.bitac.model.Provider
 import ademar.bitac.navigation.Navigator
@@ -44,11 +45,13 @@ class SettingsPresenter @Inject constructor(
     fun addConversion() {
         val currencies = getCurrencies.execute().map { it.name to it }.toMap()
         view?.chooseCurrency(currencies)
+        analytics.trackAddConversion()
     }
 
     fun addConversion(currency: Currency) {
         val providers = getProviders.execute(currency).map { it.name to it }.toMap()
         view?.chooseProvider(currency, providers)
+        analytics.trackAddConversion(currency)
     }
 
     fun addConversion(currency: Currency, provider: Provider) {
@@ -60,10 +63,12 @@ class SettingsPresenter @Inject constructor(
             view?.showError(error)
             analytics.trackError(error)
         }
+        analytics.trackAddConversion(currency, provider)
     }
 
     fun removeConversion(currency: Currency, provider: Provider) {
         disableProvider.execute(currency, provider)
+        analytics.trackRemoveConversion(currency, provider)
     }
 
 }
