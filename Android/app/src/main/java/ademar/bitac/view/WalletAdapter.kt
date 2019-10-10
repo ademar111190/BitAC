@@ -3,9 +3,7 @@ package ademar.bitac.view
 import ademar.bitac.R
 import ademar.bitac.viewmodel.WalletViewModel
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 
 class WalletAdapter : RecyclerView.Adapter<WalletViewHolder>() {
 
@@ -24,12 +22,12 @@ class WalletAdapter : RecyclerView.Adapter<WalletViewHolder>() {
     override fun getItemCount() = items.size
     override fun getItemId(position: Int) = items[position].walletId
 
-    override fun onBindViewHolder(holder: WalletViewHolder?, position: Int) {
-        holder?.bind(items[position])
+    override fun onBindViewHolder(holder: WalletViewHolder, position: Int) {
+        holder.bind(items[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): WalletViewHolder {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WalletViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         return WalletViewHolder(inflater.inflate(R.layout.item_address, parent, false))
     }
 

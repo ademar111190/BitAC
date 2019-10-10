@@ -8,6 +8,7 @@ build
 local.properties
 fabric.properties
 .gradletasknamecache
+mapping.txt
 
 # all files of
 *.iml

@@ -1,20 +1,14 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
-import ademar.bitac.ext.addOnAnimationEndListener
-import ademar.bitac.ext.getTheme
-import ademar.bitac.ext.setActionNext
-import ademar.bitac.ext.setActionSend
+import ademar.bitac.ext.*
 import ademar.bitac.injection.Injector
-import ademar.bitac.presenter.CheckAddressPresenter
-import ademar.bitac.presenter.CheckAddressView
+import ademar.bitac.presenter.*
 import ademar.bitac.viewmodel.WalletViewModel
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+import android.animation.*
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.*
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
@@ -32,7 +26,7 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
 
     private val qrReader by lazy {
         IntentIntegrator(this)
-                .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES)
+                .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
                 .setPrompt(getString(R.string.check_address_qr_hint))
                 .setBeepEnabled(true)
                 .setOrientationLocked(false)
