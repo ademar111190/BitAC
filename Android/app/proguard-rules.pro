@@ -13,18 +13,6 @@
 # App
 -keep class ademar.bitac.view.ActionButtonBehavior { *; }
 
-# Appcompat
--keep public class android.support.v7.widget.** { *; }
--keep public class android.support.v7.internal.widget.** { *; }
--keep class android.support.design.widget.** { *; }
--keep interface android.support.design.widget.** { *; }
-
-# Fabric
--keep public class * extends java.lang.Exception
--keep class com.crashlytics.** { *; }
--dontwarn com.crashlytics.**
--printmapping mapping.txt
-
 # LoganSquare
 -keep class com.bluelinelabs.logansquare.** { *; }
 -keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
@@ -45,16 +33,7 @@
 }
 
 # RxJava
--keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
-    long producerIndex;
-    long consumerIndex;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode producerNode;
-}
--keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
-    rx.internal.util.atomic.LinkedQueueNode consumerNode;
-}
+-dontwarn java.util.concurrent.Flow*
 
 # Zxing
 -optimizations !code/simplification/cast,!code/allocation/*,!field/*,!class/merging/*

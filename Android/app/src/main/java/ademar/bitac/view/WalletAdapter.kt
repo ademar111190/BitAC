@@ -2,8 +2,10 @@ package ademar.bitac.view
 
 import ademar.bitac.R
 import ademar.bitac.viewmodel.WalletViewModel
-import android.support.v7.widget.RecyclerView
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 class WalletAdapter : RecyclerView.Adapter<WalletViewHolder>() {
 

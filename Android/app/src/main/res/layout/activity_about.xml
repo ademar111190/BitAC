@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/AppToolbar"
         android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         android:background="?attr/toolbar_background"
         android:elevation="?attr/toolbar_elevation"
         app:navigationIcon="@drawable/ic_close"
-        app:title="@string/about_title"/>
+        app:title="@string/about_title" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,14 +35,14 @@
                 android:textColor="?attr/primary_text"
                 android:textIsSelectable="true"
                 android:textSize="16sp"
-                tools:text="@string/about_text"/>
+                tools:text="@string/about_text" />
 
             <ImageView
                 android:layout_width="296dp"
                 android:layout_height="296dp"
                 android:layout_marginTop="8dp"
                 android:contentDescription="@string/app_donation_address"
-                android:src="@drawable/donation"/>
+                android:src="@drawable/donation" />
 
         </LinearLayout>
 

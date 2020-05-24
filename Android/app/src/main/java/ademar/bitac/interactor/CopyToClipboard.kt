@@ -4,8 +4,8 @@ import ademar.bitac.R
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.support.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.StringRes
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/input_root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/input_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -11,24 +10,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="?attr/theme_font"
         android:gravity="center"
         android:maxWidth="264dp"
         android:text="@string/check_address_input_hint"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_address_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_hint"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/input_address"
@@ -43,23 +42,23 @@
             android:scrollbars="vertical"
             android:textSize="32sp"
             tools:ignore="RtlSymmetry"
-            tools:text="1MbRhH2duuUY5KzubRUFWfaT9gsYpacwjC"/>
+            tools:text="1MbRhH2duuUY5KzubRUFWfaT9gsYpacwjC" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/input_qr_code"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignBottom="@id/input_address_layout"
         android:layout_alignEnd="@id/input_address_layout"
+        android:layout_alignBottom="@id/input_address_layout"
         android:layout_marginBottom="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@null"
         android:focusable="true"
         android:scaleType="center"
-        android:src="@drawable/ic_qr_code"/>
+        android:src="@drawable/ic_qr_code" />
 
     <Button
         android:id="@+id/input_cancel"
@@ -67,34 +66,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_address_layout"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_toStartOf="@+id/input_check"
         android:fontFamily="?attr/theme_font"
-        android:text="@string/app_cancel"/>
+        android:text="@string/app_cancel" />
 
     <Button
         android:id="@+id/input_check"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_below="@+id/input_address_layout"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="?attr/theme_font"
-        android:text="@string/app_check"/>
+        android:text="@string/app_check" />
 
     <ProgressBar
         android:id="@+id/input_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_below="@+id/input_address_layout"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginBottom="16dp" />
 
 </RelativeLayout>

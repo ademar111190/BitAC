@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         app:cardBackgroundColor="?attr/background_color"
         app:cardCornerRadius="?attr/card_corner"
@@ -31,60 +30,60 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="?attr/theme_font"
                 android:textColor="?attr/primary_text"
                 android:textSize="14sp"
                 tools:ignore="RelativeOverlap"
-                tools:text="my address"/>
+                tools:text="my address" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/name"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginEnd="24dp"
                 android:alpha="0.6"
                 android:fontFamily="?attr/theme_font"
                 android:textColor="?attr/primary_text"
                 android:textSize="12sp"
                 android:textStyle="italic"
-                tools:text="btc1243address"/>
+                tools:text="btc1243address" />
 
             <TextView
                 android:id="@+id/balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/address"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="?attr/theme_font"
                 android:textColor="?attr/primary_text"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:text="1.23456789 BTC"/>
+                tools:text="1.23456789 BTC" />
 
             <ImageView
                 android:id="@+id/menu"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@null"
                 android:focusable="true"
                 android:scaleType="center"
                 android:src="@drawable/ic_more"
-                android:visibility="?attr/card_overflow_visibility"/>
+                android:visibility="?attr/card_overflow_visibility" />
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

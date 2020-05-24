@@ -1,8 +1,8 @@
 package ademar.bitac.ext
 
-import android.support.design.widget.BaseTransientBottomBar
-import android.support.design.widget.Snackbar
 import android.view.accessibility.AccessibilityManager
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 
 fun Snackbar.forceAnimation(): Snackbar {
     try {

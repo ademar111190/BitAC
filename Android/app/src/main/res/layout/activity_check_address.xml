@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/root"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/AppToolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         app:navigationIcon="@drawable/ic_close"
-        app:title="@string/check_address_title"/>
+        app:title="@string/check_address_title" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <include layout="@layout/check_address_input"/>
+            <include layout="@layout/check_address_input" />
 
-            <include layout="@layout/check_address_output"/>
+            <include layout="@layout/check_address_output" />
 
         </RelativeLayout>
 

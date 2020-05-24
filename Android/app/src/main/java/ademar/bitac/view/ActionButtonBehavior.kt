@@ -1,11 +1,12 @@
 package ademar.bitac.view
 
 import android.content.Context
-import android.support.annotation.Keep
-import android.support.design.widget.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.annotation.Keep
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.google.android.material.snackbar.Snackbar
 
 @Keep // Used on Xml/Reflection
 class ActionButtonBehavior(

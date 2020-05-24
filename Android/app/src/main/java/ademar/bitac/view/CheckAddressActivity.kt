@@ -1,17 +1,23 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
-import ademar.bitac.ext.*
+import ademar.bitac.ext.addOnAnimationEndListener
+import ademar.bitac.ext.getTheme
+import ademar.bitac.ext.setActionNext
+import ademar.bitac.ext.setActionSend
 import ademar.bitac.injection.Injector
-import ademar.bitac.presenter.*
+import ademar.bitac.presenter.CheckAddressPresenter
+import ademar.bitac.presenter.CheckAddressView
 import ademar.bitac.viewmodel.WalletViewModel
-import android.animation.*
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.*
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_check_address.*
 import kotlinx.android.synthetic.main.check_address_input.*

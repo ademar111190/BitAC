@@ -8,10 +8,10 @@ import ademar.bitac.injection.LifeCycleModule
 import ademar.bitac.interactor.CopyToClipboard
 import ademar.bitac.interactor.wallet.DeleteWallet
 import ademar.bitac.viewmodel.WalletViewModel
-import android.support.v7.widget.PopupMenu
-import android.support.v7.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.item_address.view.*

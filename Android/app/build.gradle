@@ -81,12 +81,12 @@ dependencies {
     kapt "com.bluelinelabs:logansquare-compiler:$loganSquareVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:cardview-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.cardview:cardview:$cardviewVersion"
     implementation "com.bluelinelabs:logansquare:$loganSquareVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     implementation "com.github.aurae.retrofit2:converter-logansquare:$loganSquareConverterVersion"
+    implementation "com.google.android.material:material:$materialVersion"
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.journeyapps:zxing-android-embedded:$xzingVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
@@ -98,8 +98,8 @@ dependencies {
 
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
     testImplementation "junit:junit:$jUnitVersion"
     testImplementation "org.assertj:assertj-core:$assertJVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"

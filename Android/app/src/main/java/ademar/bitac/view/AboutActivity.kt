@@ -4,10 +4,10 @@ import ademar.bitac.R
 import ademar.bitac.ext.getTheme
 import android.os.Build
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.text.Html.fromHtml
 import android.text.method.LinkMovementMethod
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_about.*
 
 class AboutActivity : AppCompatActivity() {
