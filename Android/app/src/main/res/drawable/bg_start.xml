@@ -17,4 +17,11 @@
         <color android:color="#22c17900"/>
     </item>
 
+    <item
+        android:width="108dp"
+        android:height="108dp"
+        android:gravity="center">
+        <bitmap android:src="@mipmap/ic_launcher_foreground"/>
+    </item>
+
 </layer-list>

@@ -1,6 +1,7 @@
 <resources>
 
     <style name="BaseLightTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:textViewStyle">@style/AppTextViewStyle</item>
         <item name="buttonStyle">@style/AppButtonStyle</item>
     </style>
@@ -11,6 +12,7 @@
     </style>
 
     <style name="BaseDialogLightTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowLightStatusBar">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/AppTextViewStyle</item>
