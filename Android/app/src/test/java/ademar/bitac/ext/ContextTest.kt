@@ -3,7 +3,7 @@ package ademar.bitac.ext
 import ademar.bitac.App
 import android.app.Activity
 import android.content.Context
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test

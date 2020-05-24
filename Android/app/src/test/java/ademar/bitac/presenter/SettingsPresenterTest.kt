@@ -1,16 +1,14 @@
 package ademar.bitac.presenter
 
 import ademar.bitac.R
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.provider.*
 import ademar.bitac.model.Currency
 import ademar.bitac.model.Provider
 import ademar.bitac.navigation.Navigator
 import ademar.bitac.view.Theme
 import android.content.Context
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.Before
@@ -22,7 +20,6 @@ class SettingsPresenterTest {
 
     @Mock private lateinit var mockContext: Context
     @Mock private lateinit var mockNavigator: Navigator
-    @Mock private lateinit var mockAnalytics: Analytics
     @Mock private lateinit var mockGetCurrencies: GetCurrencies
     @Mock private lateinit var mockGetProviders: GetProviders
     @Mock private lateinit var mockGetEnabledProviders: GetEnabledProviders
@@ -73,13 +70,13 @@ class SettingsPresenterTest {
         val view = object : StubSettingsView() {
         }
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
     }
 
     @Test
     fun testDetach() {
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = null
     }
 
@@ -89,7 +86,7 @@ class SettingsPresenterTest {
         }
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf())
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.loadData()
     }
@@ -105,7 +102,7 @@ class SettingsPresenterTest {
         }
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf(mockCurrencyA to mockProviderA))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.loadData()
 
@@ -123,7 +120,7 @@ class SettingsPresenterTest {
         }
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf(mockCurrencyA to mockProviderA, mockCurrencyB to mockProviderB))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.loadData()
 
@@ -135,11 +132,10 @@ class SettingsPresenterTest {
         val view = object : StubSettingsView() {
         }
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.about()
 
-        verify(mockAnalytics).trackAbout()
         verify(mockNavigator).launchAbout()
     }
 
@@ -148,11 +144,10 @@ class SettingsPresenterTest {
         val view = object : StubSettingsView() {
         }
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.changeTheme(Theme.ELEVEN.tag)
 
-        verify(mockAnalytics).trackThemeChange(Theme.ELEVEN)
         verify(mockNavigator).launchHome(Theme.ELEVEN)
     }
 
@@ -167,11 +162,10 @@ class SettingsPresenterTest {
 
         whenever(mockGetCurrencies.execute()).thenReturn(listOf(mockCurrencyA, mockCurrencyB))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.addConversion()
 
-        verify(mockAnalytics).trackAddConversion()
         assertThat(chooseCurrencyCount).isEqualTo(1)
     }
 
@@ -187,11 +181,10 @@ class SettingsPresenterTest {
 
         whenever(mockGetProviders.execute(mockCurrencyA)).thenReturn(listOf(mockProviderA, mockProviderB))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.addConversion(mockCurrencyA)
 
-        verify(mockAnalytics).trackAddConversion(mockCurrencyA)
         assertThat(chooseProviderCount).isEqualTo(1)
     }
 
@@ -207,12 +200,11 @@ class SettingsPresenterTest {
 
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf())
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.addConversion(mockCurrencyA, mockProviderA)
 
         verify(mockEnableProvider).execute(mockCurrencyA, mockProviderA)
-        verify(mockAnalytics).trackAddConversion(mockCurrencyA, mockProviderA)
         assertThat(addConversionCount).isEqualTo(1)
     }
 
@@ -228,12 +220,11 @@ class SettingsPresenterTest {
 
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf(mockCurrencyB to mockProviderB))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.addConversion(mockCurrencyA, mockProviderA)
 
         verify(mockEnableProvider).execute(mockCurrencyA, mockProviderA)
-        verify(mockAnalytics).trackAddConversion(mockCurrencyA, mockProviderA)
         assertThat(addConversionCount).isEqualTo(1)
     }
 
@@ -248,12 +239,10 @@ class SettingsPresenterTest {
 
         whenever(mockGetEnabledProviders.execute()).thenReturn(setOf(mockCurrencyA to mockProviderA))
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.addConversion(mockCurrencyA, mockProviderA)
 
-        verify(mockAnalytics).trackError(any())
-        verify(mockAnalytics).trackAddConversion(mockCurrencyA, mockProviderA)
         assertThat(showErrorCount).isEqualTo(1)
     }
 
@@ -262,12 +251,11 @@ class SettingsPresenterTest {
         val view = object : StubSettingsView() {
         }
 
-        val presenter = SettingsPresenter(mockContext, mockNavigator, mockAnalytics, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
+        val presenter = SettingsPresenter(mockContext, mockNavigator, mockGetCurrencies, mockGetProviders, mockGetEnabledProviders, mockDisableProvider, mockEnableProvider)
         presenter.view = view
         presenter.removeConversion(mockCurrencyA, mockProviderA)
 
         verify(mockDisableProvider).execute(mockCurrencyA, mockProviderA)
-        verify(mockAnalytics).trackRemoveConversion(mockCurrencyA, mockProviderA)
     }
 
 }

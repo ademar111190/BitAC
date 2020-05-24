@@ -1,8 +1,8 @@
 package ademar.bitac.interactor.wallet
 
 import ademar.bitac.repository.WalletRepository
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

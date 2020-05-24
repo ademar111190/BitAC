@@ -8,7 +8,8 @@ import java.util.stream.Collectors
 object JsonTestUtils {
 
     fun readJson(fileName: String): String {
-        val stream = javaClass.classLoader.getResourceAsStream("json/$fileName.json")
+        val stream = javaClass.classLoader?.getResourceAsStream("json/$fileName.json")
+                ?: throw IllegalStateException("Invalid Classloader")
         return BufferedReader(InputStreamReader(stream)).lines().collect(Collectors.joining("\n"))
     }
 

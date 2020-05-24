@@ -22,7 +22,8 @@ class HomeActivity : AppCompatActivity(), HomeView {
 
     private val adapter = WalletAdapter()
 
-    @Inject lateinit var presenter: HomePresenter
+    @Inject
+    lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(intent.getTheme().resTheme)
@@ -112,9 +113,9 @@ class HomeActivity : AppCompatActivity(), HomeView {
         val color = typedValue.data
 
         Snackbar.make(root, getString(R.string.home_deleted_address_message, wallet.name), Snackbar.LENGTH_LONG)
-                .setAction(R.string.app_undo, {
+                .setAction(R.string.app_undo) {
                     presenter.undoDelete(wallet)
-                })
+                }
                 .setActionTextColor(color)
                 .forceAnimation()
                 .show()

@@ -1,7 +1,6 @@
 package ademar.bitac.presenter
 
 import ademar.bitac.R
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.provider.*
 import ademar.bitac.model.Currency
 import ademar.bitac.model.Provider
@@ -14,7 +13,6 @@ class SettingsPresenter @Inject constructor(
 
         private val context: Context,
         private val navigator: Navigator,
-        private val analytics: Analytics,
         private val getCurrencies: GetCurrencies,
         private val getProviders: GetProviders,
         private val getEnabledProviders: GetEnabledProviders,
@@ -32,26 +30,22 @@ class SettingsPresenter @Inject constructor(
     }
 
     fun about() {
-        analytics.trackAbout()
         navigator.launchAbout()
     }
 
     fun changeTheme(themeKey: String) {
         val theme = Theme.getTheme(themeKey)
-        analytics.trackThemeChange(theme)
         navigator.launchHome(theme)
     }
 
     fun addConversion() {
         val currencies = getCurrencies.execute().map { it.name to it }.toMap()
         view?.chooseCurrency(currencies)
-        analytics.trackAddConversion()
     }
 
     fun addConversion(currency: Currency) {
         val providers = getProviders.execute(currency).map { it.name to it }.toMap()
         view?.chooseProvider(currency, providers)
-        analytics.trackAddConversion(currency)
     }
 
     fun addConversion(currency: Currency, provider: Provider) {
@@ -61,14 +55,11 @@ class SettingsPresenter @Inject constructor(
         } else {
             val error = Exception(context.getString(R.string.settings_add_conversion_repeated, currency.name, provider.name))
             view?.showError(error)
-            analytics.trackError(error)
         }
-        analytics.trackAddConversion(currency, provider)
     }
 
     fun removeConversion(currency: Currency, provider: Provider) {
         disableProvider.execute(currency, provider)
-        analytics.trackRemoveConversion(currency, provider)
     }
 
 }

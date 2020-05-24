@@ -2,9 +2,9 @@ package ademar.bitac.view
 
 import ademar.bitac.R
 import ademar.bitac.ext.getApp
+import ademar.bitac.ext.subscribeBy
 import ademar.bitac.injection.DaggerLifeCycleComponent
 import ademar.bitac.injection.LifeCycleModule
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.CopyToClipboard
 import ademar.bitac.interactor.wallet.DeleteWallet
 import ademar.bitac.viewmodel.WalletViewModel
@@ -12,16 +12,17 @@ import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.util.TypedValue
 import android.view.View
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.item_address.view.*
 import javax.inject.Inject
 
 class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    @Inject lateinit var deleteWallet: DeleteWallet
-    @Inject lateinit var copyToClipboard: CopyToClipboard
-    @Inject lateinit var analytics: Analytics
+    @Inject
+    lateinit var deleteWallet: DeleteWallet
+    @Inject
+    lateinit var copyToClipboard: CopyToClipboard
 
     private var viewModel: WalletViewModel? = null
 
@@ -39,11 +40,9 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 when (it.itemId) {
                     R.id.copy_address -> {
                         copyToClipboard.execute(R.string.address_copy_address_label, viewModel?.address)
-                        analytics.trackCopy(Analytics.CopyData.ADDRESS)
                     }
                     R.id.copy_balance -> {
                         copyToClipboard.execute(R.string.address_copy_balance_label, viewModel?.balance)
-                        analytics.trackCopy(Analytics.CopyData.BALANCE)
                     }
                     R.id.delete -> delete()
                     else -> null
@@ -78,9 +77,8 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             deleteWallet.execute(it.walletId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
+                    .subscribeBy()
         }
-        analytics.trackDeleteAddress()
     }
 
 }

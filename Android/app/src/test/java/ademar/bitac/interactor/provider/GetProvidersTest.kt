@@ -3,7 +3,7 @@ package ademar.bitac.interactor.provider
 import ademar.bitac.model.Currency
 import ademar.bitac.model.Provider
 import ademar.bitac.test.fixture.CurrencyFixture
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test

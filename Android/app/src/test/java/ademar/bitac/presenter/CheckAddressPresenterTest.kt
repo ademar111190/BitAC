@@ -1,7 +1,6 @@
 package ademar.bitac.presenter
 
 import ademar.bitac.R
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.BitcoinUri
 import ademar.bitac.interactor.wallet.AddWallet
 import ademar.bitac.interactor.wallet.CleanWalletName
@@ -14,14 +13,13 @@ import ademar.bitac.viewmodel.WalletMapper
 import ademar.bitac.viewmodel.WalletViewModel
 import android.app.Activity
 import android.content.Context
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Completable
-import io.reactivex.Single
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
 import org.junit.Before
@@ -40,7 +38,6 @@ class CheckAddressPresenterTest {
     @Mock private lateinit var mockAddWallet: AddWallet
     @Mock private lateinit var mockWalletMapper: WalletMapper
     @Mock private lateinit var mockStandardErrors: StandardErrors
-    @Mock private lateinit var mockAnalytics: Analytics
     @Mock private lateinit var mockException: Exception
     @Mock private lateinit var mockHumanException: Exception
 
@@ -106,13 +103,12 @@ class CheckAddressPresenterTest {
 
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(0))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.loadData()
 
         assertThat(showInputCount).isEqualTo(1)
         assertThat(showTipsCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressOpen()
     }
 
     @Test
@@ -130,13 +126,12 @@ class CheckAddressPresenterTest {
 
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(1))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.loadData()
 
         assertThat(showInputCount).isEqualTo(1)
         assertThat(hideTipsCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressOpen()
     }
 
     @Test
@@ -154,13 +149,12 @@ class CheckAddressPresenterTest {
 
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.just(100))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.loadData()
 
         assertThat(showInputCount).isEqualTo(1)
         assertThat(hideTipsCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressOpen()
     }
 
     @Test
@@ -174,23 +168,20 @@ class CheckAddressPresenterTest {
 
         whenever(mockGetWalletsCount.execute()).thenReturn(Single.error(mockException))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.loadData()
 
         assertThat(showInputCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressOpen()
-        verify(mockAnalytics).trackError(mockException)
     }
 
     @Test
     fun testCancel() {
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = StubCheckAddressView()
         presenter.cancel()
 
         verify(mockActivity).finish()
-        verify(mockAnalytics).trackVerifyAddressCancel()
     }
 
     @Test
@@ -209,11 +200,10 @@ class CheckAddressPresenterTest {
 
         whenever(mockBitcoinUri.getAddress(action)).thenReturn(null)
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.parseAction(action)
 
-        verify(mockAnalytics).trackVerifyQrCode(false)
         assertThat(showNonFatalErrorMessageCount).isEqualTo(1)
     }
 
@@ -230,11 +220,10 @@ class CheckAddressPresenterTest {
         whenever(mockBitcoinUri.getLabel(action)).thenReturn(label)
         whenever(mockCleanWalletName.execute(label, "")).thenReturn(label)
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.parseAction(action)
 
-        verify(mockAnalytics).trackVerifyQrCode(true)
     }
 
     @Test
@@ -246,12 +235,11 @@ class CheckAddressPresenterTest {
             }
         }
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.check(null)
 
         assertThat(showErrorCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressVerify(any())
     }
 
     @Test
@@ -263,12 +251,11 @@ class CheckAddressPresenterTest {
             }
         }
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.check(" ")
 
         assertThat(showErrorCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressVerify(any())
     }
 
     @Test
@@ -291,15 +278,13 @@ class CheckAddressPresenterTest {
 
         whenever(mockGetAddressData.execute(address)).thenReturn(Single.error(mockException))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.check(address)
 
         assertThat(showInputLoadingCount).isEqualTo(1)
         assertThat(showErrorCount).isEqualTo(1)
         assertThat(showInputCount).isEqualTo(1)
-        verify(mockAnalytics).trackError(mockException)
-        verify(mockAnalytics).trackVerifyAddressVerify(mockException)
     }
 
     @Test
@@ -320,13 +305,12 @@ class CheckAddressPresenterTest {
         whenever(mockGetAddressData.execute(address)).thenReturn(Single.just(addressModel))
         whenever(mockWalletMapper.transform(defaultWalletViewModel, addressModel)).thenReturn(walletViewModel)
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.check(address)
 
         assertThat(showInputLoadingCount).isEqualTo(1)
         assertThat(showSaveCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressVerify()
     }
 
     @Test
@@ -338,12 +322,11 @@ class CheckAddressPresenterTest {
             }
         }
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.change()
 
         assertThat(showInputCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressChange()
     }
 
     @Test
@@ -357,13 +340,12 @@ class CheckAddressPresenterTest {
         whenever(mockCleanWalletName.execute(name, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.complete())
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.save(name)
 
         assertThat(showSaveLoadingCount).isEqualTo(1)
         verify(mockActivity).finish()
-        verify(mockAnalytics).trackVerifyAddressSave(true)
     }
 
     @Test
@@ -377,13 +359,12 @@ class CheckAddressPresenterTest {
         whenever(mockCleanWalletName.execute(null, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.complete())
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.save(null)
 
         assertThat(showSaveLoadingCount).isEqualTo(1)
         verify(mockActivity).finish()
-        verify(mockAnalytics).trackVerifyAddressSave(false)
     }
 
     @Test
@@ -407,15 +388,13 @@ class CheckAddressPresenterTest {
         whenever(mockCleanWalletName.execute(name, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.error(mockException))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.save(name)
 
         assertThat(showSaveLoadingCount).isEqualTo(1)
         assertThat(showErrorCount).isEqualTo(1)
         assertThat(showSaveCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressSave(true, mockException)
-        verify(mockAnalytics).trackError(mockException)
     }
 
     @Test
@@ -439,15 +418,13 @@ class CheckAddressPresenterTest {
         whenever(mockCleanWalletName.execute(null, defaultWalletName)).thenReturn(cleanedName)
         whenever(mockAddWallet.execute(cleanedName, "", 0L)).thenReturn(Completable.error(mockException))
 
-        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors, mockAnalytics)
+        val presenter = CheckAddressPresenter(mockContext, mockActivity, mockBitcoinUri, mockCleanWalletName, mockGetAddressData, mockGetWalletsCount, mockAddWallet, mockWalletMapper, mockStandardErrors)
         presenter.view = view
         presenter.save(null)
 
         assertThat(showSaveLoadingCount).isEqualTo(1)
         assertThat(showErrorCount).isEqualTo(1)
         assertThat(showSaveCount).isEqualTo(1)
-        verify(mockAnalytics).trackVerifyAddressSave(false, mockException)
-        verify(mockAnalytics).trackError(mockException)
     }
 
 }

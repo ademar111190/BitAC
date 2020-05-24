@@ -1,8 +1,8 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
+import ademar.bitac.ext.errorLogger
 import ademar.bitac.injection.Injector
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.model.Currency
 import ademar.bitac.model.Provider
 import ademar.bitac.presenter.SettingsPresenter
@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 class SettingsFragment : PreferenceFragment(), SettingsView {
 
-    @Inject lateinit var analytics: Analytics
     @Inject lateinit var presenter: SettingsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,10 +54,10 @@ class SettingsFragment : PreferenceFragment(), SettingsView {
                         .setTitle(R.string.settings_delete_conversion_title)
                         .setMessage(context.getString(R.string.settings_delete_conversion_message, currency.name, provider.name))
                         .setNegativeButton(R.string.settings_delete_conversion_cancel, null)
-                        .setPositiveButton(R.string.settings_delete_conversion_delete, { _, _ ->
+                        .setPositiveButton(R.string.settings_delete_conversion_delete) { _, _ ->
                             presenter.removeConversion(currency, provider)
                             conversions.removePreference(this)
-                        })
+                        }
                         .create()
                         .show()
                 true
@@ -78,15 +77,15 @@ class SettingsFragment : PreferenceFragment(), SettingsView {
         AlertDialog.Builder(context)
                 .setTitle(R.string.settings_add_conversion_step_1)
                 .setNegativeButton(R.string.settings_add_conversion_cancel, null)
-                .setItems(currencies.keys.toTypedArray(), { currencyDialog, currencyWhich ->
+                .setItems(currencies.keys.toTypedArray()) { currencyDialog, currencyWhich ->
                     currencyDialog.dismiss()
                     val currency = currencies[currencies.keys.elementAt(currencyWhich)]
                     if (currency != null) {
                         presenter.addConversion(currency)
                     } else {
-                        analytics.trackError(IllegalStateException("Unknown currency to position $currencyWhich input $currencies"))
+                        errorLogger(IllegalStateException("Unknown currency to position $currencyWhich input $currencies"))
                     }
-                })
+                }
                 .create()
                 .show()
     }
@@ -97,15 +96,15 @@ class SettingsFragment : PreferenceFragment(), SettingsView {
         AlertDialog.Builder(context)
                 .setTitle(R.string.settings_add_conversion_step_2)
                 .setNegativeButton(R.string.settings_add_conversion_cancel, null)
-                .setItems(providers.keys.toTypedArray(), { providerDialog, providerWhich ->
+                .setItems(providers.keys.toTypedArray()) { providerDialog, providerWhich ->
                     providerDialog.dismiss()
                     val provider = providers[providers.keys.elementAt(providerWhich)]
                     if (provider != null) {
                         presenter.addConversion(currency, provider)
                     } else {
-                        analytics.trackError(IllegalStateException("Unknown provider to position $providerWhich input $providers"))
+                        errorLogger(IllegalStateException("Unknown provider to position $providerWhich input $providers"))
                     }
-                })
+                }
                 .create()
                 .show()
     }

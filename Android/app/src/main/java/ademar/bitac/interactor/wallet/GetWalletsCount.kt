@@ -1,7 +1,7 @@
 package ademar.bitac.interactor.wallet
 
 import ademar.bitac.repository.WalletRepository
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
 class GetWalletsCount @Inject constructor(

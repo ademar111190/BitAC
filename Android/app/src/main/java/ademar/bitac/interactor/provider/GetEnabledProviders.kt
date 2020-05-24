@@ -23,7 +23,7 @@ class GetEnabledProviders @Inject constructor(
                 .apply()
         enabledProvider.execute()
     } else {
-        preference.getStringSet(KEY_PROVIDER_SETUP, setOf()).map {
+        (preference.getStringSet(KEY_PROVIDER_SETUP, setOf()) ?: emptySet()).map {
             it.split(":")
         }.map { getCurrencies.execute(it[0]) to getProviders.execute(it[1]) }.toSet()
     }

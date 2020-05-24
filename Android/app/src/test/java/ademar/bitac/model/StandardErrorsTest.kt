@@ -2,7 +2,7 @@ package ademar.bitac.model
 
 import ademar.bitac.R
 import android.content.Context
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test

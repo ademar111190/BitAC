@@ -4,10 +4,9 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.doAnswer
-import com.nhaarman.mockito_kotlin.whenever
-import org.assertj.core.api.Assertions
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doAnswer
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -36,12 +35,12 @@ class EditTextTest {
             callCount++
         }
 
-        assertThat(listener).isNotNull()
+        assertThat(listener).isNotNull
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_ACTION_NEXT, mockKeyEvent)
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_ACTION_SEND, mockKeyEvent)
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_NULL, mockKeyEvent)
 
-        Assertions.assertThat(callCount).isEqualTo(1)
+        assertThat(callCount).isEqualTo(1)
     }
 
     @Test
@@ -56,12 +55,12 @@ class EditTextTest {
             callCount++
         }
 
-        assertThat(listener).isNotNull()
+        assertThat(listener).isNotNull
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_ACTION_NEXT, mockKeyEvent)
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_ACTION_SEND, mockKeyEvent)
         listener!!.onEditorAction(mockEditText, EditorInfo.IME_NULL, mockKeyEvent)
 
-        Assertions.assertThat(callCount).isEqualTo(1)
+        assertThat(callCount).isEqualTo(1)
     }
 
 }

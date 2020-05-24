@@ -20,7 +20,7 @@ class CopyToClipboard @Inject constructor(
 
     fun execute(@StringRes label: Int, text: String?) {
         if (text != null) {
-            clipboard.primaryClip = ClipData.newPlainText(context.getString(label), text)
+            clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(label), text))
             Toast.makeText(context, R.string.app_copied, Toast.LENGTH_SHORT).show()
         }
     }

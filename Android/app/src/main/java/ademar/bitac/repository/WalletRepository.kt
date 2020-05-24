@@ -1,7 +1,7 @@
 package ademar.bitac.repository
 
 import ademar.bitac.ext.observeBody
-import ademar.bitac.interactor.Analytics
+import ademar.bitac.ext.subscribeBy
 import ademar.bitac.interactor.wallet.WalletAddWatcher
 import ademar.bitac.interactor.wallet.WalletChangeWatcher
 import ademar.bitac.interactor.wallet.WalletDeleteWatcher
@@ -10,9 +10,8 @@ import ademar.bitac.model.Wallet
 import ademar.bitac.repository.datasource.WalletCloud
 import ademar.bitac.repository.datasource.WalletLocal
 import ademar.bitac.repository.datasource.WalletStorage
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,21 +24,20 @@ class WalletRepository @Inject constructor(
         private val retrofit: Retrofit,
         walletAddWatcher: WalletAddWatcher,
         walletChangeWatcher: WalletChangeWatcher,
-        walletDeleteWatcher: WalletDeleteWatcher,
-        analytics: Analytics
+        walletDeleteWatcher: WalletDeleteWatcher
 
 ) {
 
     init {
-        walletAddWatcher.observe().subscribe({
+        walletAddWatcher.observe().subscribeBy({
             walletLocal.wallets?.put(it.id, it)
-        }, analytics::trackError)
-        walletChangeWatcher.observe().subscribe({
+        })
+        walletChangeWatcher.observe().subscribeBy({
             walletLocal.wallets?.put(it.id, it)
-        }, analytics::trackError)
-        walletDeleteWatcher.observe().subscribe({
+        })
+        walletDeleteWatcher.observe().subscribeBy({
             walletLocal.wallets?.remove(it)
-        }, analytics::trackError)
+        })
     }
 
     fun getWallets(): List<Wallet> {
@@ -71,8 +69,8 @@ class WalletRepository @Inject constructor(
         return Observable.fromCallable {
             walletCloud.getAddressBalances(address)
         }.flatMap {
-                    retrofit.observeBody(it)
-                }
+            retrofit.observeBody(it)
+        }
     }
 
 }

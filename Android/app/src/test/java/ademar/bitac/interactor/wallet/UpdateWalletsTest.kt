@@ -2,8 +2,8 @@ package ademar.bitac.interactor.wallet
 
 import ademar.bitac.model.Wallet
 import ademar.bitac.repository.WalletRepository
-import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Single
+import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.rxjava3.core.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

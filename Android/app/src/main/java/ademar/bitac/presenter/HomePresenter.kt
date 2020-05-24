@@ -1,17 +1,16 @@
 package ademar.bitac.presenter
 
-import ademar.bitac.interactor.Analytics
-import ademar.bitac.interactor.GetTheme
+import ademar.bitac.ext.subscribeBy
 import ademar.bitac.interactor.wallet.*
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.model.Wallet
 import ademar.bitac.navigation.Navigator
 import ademar.bitac.viewmodel.WalletMapper
 import ademar.bitac.viewmodel.WalletViewModel
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class HomePresenter @Inject constructor(
@@ -21,13 +20,11 @@ class HomePresenter @Inject constructor(
         private val walletMapper: WalletMapper,
         private val addWallet: AddWallet,
         private val getWalletsCount: GetWalletsCount,
-        private val getTheme: GetTheme,
         private val navigator: Navigator,
         private val walletAddWatcher: WalletAddWatcher,
         private val walletChangeWatcher: WalletChangeWatcher,
         private val walletDeleteWatcher: WalletDeleteWatcher,
-        private val standardErrors: StandardErrors,
-        private val analytics: Analytics
+        private val standardErrors: StandardErrors
 
 ) {
 
@@ -41,22 +38,22 @@ class HomePresenter @Inject constructor(
                 subscriptions.dispose()
             } else {
                 subscriptions.add(walletAddWatcher.observe()
-                        .subscribe({
+                        .subscribeBy({
                             execute(Observable.just(it))
-                        }, analytics::trackError))
+                        }))
                 subscriptions.add(walletChangeWatcher.observe()
-                        .subscribe({
+                        .subscribeBy({
                             execute(Observable.just(it))
-                        }, analytics::trackError))
+                        }))
                 subscriptions.add(walletDeleteWatcher.observe()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({
+                        .subscribeBy({
                             val viewModel = walletMap.remove(it)
                             if (viewModel != null) {
                                 view?.deleteWallet(viewModel)
                             }
-                        }, analytics::trackError))
+                        }))
             }
         }
 
@@ -67,31 +64,25 @@ class HomePresenter @Inject constructor(
         subscriptions.add(getWalletsCount.execute()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    analytics.trackStart(it, getTheme.execute())
-                }, analytics::trackError))
+                .subscribeBy())
     }
 
     fun reload() {
         view?.showLoading()
         execute(updateWallets.execute())
-        analytics.trackReloadAction(Analytics.ReloadActionSource.MENU)
     }
 
     fun refresh() {
         view?.showRefreshing()
         execute(updateWallets.execute())
-        analytics.trackReloadAction(Analytics.ReloadActionSource.SWIPE)
     }
 
     fun about() {
         navigator.launchAbout()
-        analytics.trackAbout()
     }
 
     fun settings() {
         navigator.launchSettings()
-        analytics.trackSettings()
     }
 
     fun checkAddress() {
@@ -102,8 +93,7 @@ class HomePresenter @Inject constructor(
         subscriptions.add(addWallet.execute(walletMapper.transform(viewModel))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, analytics::trackError))
-        analytics.trackUndoDeleteAddress()
+                .subscribeBy())
     }
 
     private fun execute(observable: Observable<Wallet>) {
@@ -121,7 +111,7 @@ class HomePresenter @Inject constructor(
                     walletMap[it.id] = viewModel
                     viewModel
                 }
-                .subscribe({
+                .subscribeBy({
                     view?.addWallet(it)
                     view?.showContent()
                 }, {
@@ -131,7 +121,6 @@ class HomePresenter @Inject constructor(
                     } else {
                         view?.showContent()
                     }
-                    analytics.trackError(it)
                 }, {
                     view?.showContent()
                 }))

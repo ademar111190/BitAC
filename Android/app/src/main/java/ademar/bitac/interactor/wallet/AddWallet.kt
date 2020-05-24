@@ -2,7 +2,7 @@ package ademar.bitac.interactor.wallet
 
 import ademar.bitac.model.Wallet
 import ademar.bitac.repository.WalletRepository
-import io.reactivex.Completable
+import io.reactivex.rxjava3.core.Completable
 import javax.inject.Inject
 
 class AddWallet @Inject constructor(

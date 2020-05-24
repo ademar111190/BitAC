@@ -1,7 +1,6 @@
 package ademar.bitac.repository
 
 import ademar.bitac.R
-import ademar.bitac.interactor.Analytics
 import ademar.bitac.interactor.wallet.WalletAddWatcher
 import ademar.bitac.interactor.wallet.WalletChangeWatcher
 import ademar.bitac.interactor.wallet.WalletDeleteWatcher
@@ -13,8 +12,8 @@ import ademar.bitac.test.JsonTestUtils
 import ademar.bitac.test.fixture.MultiAddressFixture
 import ademar.bitac.test.fixture.RetrofitFixture
 import android.content.Context
-import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Observable
+import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.rxjava3.core.Observable
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -32,7 +31,6 @@ class WalletRepositoryTest {
     @Mock private lateinit var mockWalletAddWatcher: WalletAddWatcher
     @Mock private lateinit var mockWalletChangeWatcher: WalletChangeWatcher
     @Mock private lateinit var mockWalletDeleteWatcher: WalletDeleteWatcher
-    @Mock private lateinit var mockAnalytics: Analytics
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var mockRetrofit: Retrofit
@@ -68,7 +66,7 @@ class WalletRepositoryTest {
                 .setResponseCode(200)
                 .setBody(JsonTestUtils.readJson("multi_address")))
 
-        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockAnalytics)
+        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher)
                 .fetchMultiAddress(address)
                 .test()
                 .assertResult(MultiAddressFixture.makeModel().apply {
@@ -82,7 +80,7 @@ class WalletRepositoryTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(200))
 
-        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockAnalytics)
+        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher)
                 .fetchMultiAddress(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -94,7 +92,7 @@ class WalletRepositoryTest {
                 .setResponseCode(200)
                 .setBody(""))
 
-        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockAnalytics)
+        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher)
                 .fetchMultiAddress(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unknown)
@@ -105,7 +103,7 @@ class WalletRepositoryTest {
         mockWebServer.enqueue(MockResponse()
                 .setResponseCode(401))
 
-        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher, mockAnalytics)
+        WalletRepository(mockWalletLocal, mockWalletStorage, mockWalletCloud, mockRetrofit, mockWalletAddWatcher, mockWalletChangeWatcher, mockWalletDeleteWatcher)
                 .fetchMultiAddress(address)
                 .test()
                 .assertError(StandardErrors(mockContext).unauthorized)

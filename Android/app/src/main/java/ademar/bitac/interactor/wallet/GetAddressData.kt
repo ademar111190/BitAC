@@ -2,7 +2,7 @@ package ademar.bitac.interactor.wallet
 
 import ademar.bitac.model.Address
 import ademar.bitac.repository.WalletRepository
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
 class GetAddressData @Inject constructor(
@@ -12,7 +12,7 @@ class GetAddressData @Inject constructor(
 ) {
 
     fun execute(address: String): Single<Address> {
-        return walletRepository.fetchMultiAddress(address).filter {
+        return walletRepository.fetchMultiAddress(address).filter { it ->
             it.addresses != null
         }.map {
                     it.addresses!!

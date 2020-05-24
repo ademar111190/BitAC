@@ -2,7 +2,7 @@ package ademar.bitac.ext
 
 import ademar.bitac.model.Error
 import ademar.bitac.model.StandardErrors
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import okhttp3.internal.http2.ErrorCode
 import okhttp3.internal.http2.StreamResetException
 import org.junit.Before

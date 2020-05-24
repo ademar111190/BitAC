@@ -6,7 +6,6 @@ import ademar.bitac.ext.standardErrors
 import ademar.bitac.model.StandardErrors
 import ademar.bitac.repository.datasource.WalletCloud
 import android.content.Context
-import com.crashlytics.android.answers.Answers
 import com.github.aurae.retrofit2.LoganSquareConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -27,12 +26,6 @@ class AppModule(
     @Singleton
     fun provideContext(): Context {
         return app
-    }
-
-    @Provides
-    @Singleton
-    fun provideAnswers(): Answers {
-        return Answers.getInstance()
     }
 
     @Provides

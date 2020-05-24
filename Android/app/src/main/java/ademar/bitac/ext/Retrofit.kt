@@ -2,14 +2,14 @@ package ademar.bitac.ext
 
 import ademar.bitac.model.FieldProperty
 import ademar.bitac.model.StandardErrors
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.Retrofit
 import java.io.IOException
 
 var Retrofit.standardErrors: StandardErrors by FieldProperty()
 
-fun <T> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create<T> {
+fun <T> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create {
     val response = try {
         call.execute()
     } catch (e: IOException) {

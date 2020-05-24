@@ -2,7 +2,7 @@ package ademar.bitac.interactor.wallet
 
 import ademar.bitac.model.Wallet
 import ademar.bitac.repository.WalletRepository
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 class GetWallets @Inject constructor(

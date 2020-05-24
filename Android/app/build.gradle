@@ -2,7 +2,6 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "kotlin-android-extensions"
-apply plugin: "io.fabric"
 
 android {
 
@@ -64,6 +63,11 @@ android {
         abortOnError false
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     packagingOptions {
         exclude "META-INF/LICENSE"
         exclude "META-INF/LICENSE.txt"
@@ -88,17 +92,14 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
-        transitive = true
-    }
 
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
     testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
-    testImplementation "com.nhaarman:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
     testImplementation "junit:junit:$jUnitVersion"
     testImplementation "org.assertj:assertj-core:$assertJVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"

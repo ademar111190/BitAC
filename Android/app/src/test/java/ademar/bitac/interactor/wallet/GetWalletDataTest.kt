@@ -4,8 +4,8 @@ import ademar.bitac.repository.WalletRepository
 import ademar.bitac.test.fixture.AddressFixture
 import ademar.bitac.test.fixture.MultiAddressFixture
 import ademar.bitac.test.fixture.WalletFixture
-import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Observable
+import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.rxjava3.core.Observable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

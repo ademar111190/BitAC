@@ -1,13 +1,12 @@
 package ademar.bitac.ext
 
 import android.database.Cursor
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import java.lang.Exception
 
 class CursorTest {
 

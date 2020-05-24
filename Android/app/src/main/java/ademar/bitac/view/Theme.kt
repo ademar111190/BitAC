@@ -17,7 +17,7 @@ enum class Theme constructor(
     ADA("ada", R.style.AppAdaTheme, R.style.AppDialogAdaTheme);
 
     companion object {
-        fun getTheme(tag: String) = Theme.values().firstOrNull { it.tag == tag } ?: Theme.ELEVEN
+        fun getTheme(tag: String?) = values().firstOrNull { it.tag == tag } ?: ELEVEN
     }
 
 }

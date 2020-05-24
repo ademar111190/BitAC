@@ -2,13 +2,13 @@ package ademar.bitac.ext
 
 import android.animation.Animator
 import android.animation.AnimatorSet
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.doAnswer
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.Mockito.doAnswer
 import org.mockito.MockitoAnnotations
 
 class AnimatorSetTest {
@@ -26,12 +26,13 @@ class AnimatorSetTest {
         var listener: Animator.AnimatorListener? = null
         doAnswer {
             listener = it.arguments[0] as Animator.AnimatorListener
+            Unit
         }.whenever(mockAnimatorSet).addListener(any())
 
         var callCount = 0
         mockAnimatorSet.addOnAnimationEndListener { callCount++ }
 
-        assertThat(listener).isNotNull()
+        assertThat(listener).isNotNull
 
         listener!!.let {
             it.onAnimationStart(mockAnimator)

@@ -1,7 +1,7 @@
 package ademar.bitac.interactor.wallet
 
 import ademar.bitac.repository.WalletRepository
-import io.reactivex.Completable
+import io.reactivex.rxjava3.core.Completable
 import javax.inject.Inject
 
 class DeleteWallet @Inject constructor(
