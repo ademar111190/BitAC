@@ -18,14 +18,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="conversions"
-        android:title="@string/settings_conversions">
-
-        <Preference
-            android:key="add_conversion"
-            android:title="@string/settings_add_conversion"/>
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

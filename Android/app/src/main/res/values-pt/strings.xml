@@ -19,17 +19,6 @@
     <string name="settings_theme_doge">Tema doge</string>
     <string name="settings_theme_eleven">Tema 11</string>
     <string name="settings_theme_ada">Tema ada</string>
-    <string name="settings_conversions">Conversões</string>
-    <string name="settings_add_conversion">Adicionar conversão</string>
-    <string name="settings_using_conversion">%s através de %s</string>
-    <string name="settings_delete_conversion_title">Descartar conversão</string>
-    <string name="settings_delete_conversion_message">Você deseja descartar a conversão para %s dada por %s?</string>
-    <string name="settings_delete_conversion_cancel">Cancelar</string>
-    <string name="settings_delete_conversion_delete">Descartar</string>
-    <string name="settings_add_conversion_cancel">Cancelar</string>
-    <string name="settings_add_conversion_step_1">Escolha uma moeda</string>
-    <string name="settings_add_conversion_step_2">Escolha um provedor</string>
-    <string name="settings_add_conversion_repeated">Você já possui %s dado por %s</string>
 
     <string name="home_empty_hint">Bem-vindo ao aplicativo Verificador de Endereço Bitcoin (BitAC).\n\nVocê pode clicar no botão Verificar Endereço a qualquer momento para ver quantos bitcoins um endereço possui, após isso você pode salvar o endereço para rapidamente verifica-lo novamente no futuro.\n\nTodos os endereços salvos aparecerão aqui, aproveite o aplicativo.</string>
     <string name="home_deleted_address_message">O endereço %s foi deletado</string>

@@ -19,17 +19,6 @@
     <string name="settings_theme_doge">Doge theme</string>
     <string name="settings_theme_eleven">11 theme</string>
     <string name="settings_theme_ada">Ada theme</string>
-    <string name="settings_conversions">Conversions</string>
-    <string name="settings_add_conversion">Add conversion</string>
-    <string name="settings_using_conversion">%s from %s</string>
-    <string name="settings_delete_conversion_title">Delete conversion</string>
-    <string name="settings_delete_conversion_message">Do you want to delete the conversion to %s given by %s?</string>
-    <string name="settings_delete_conversion_cancel">Cancel</string>
-    <string name="settings_delete_conversion_delete">Delete</string>
-    <string name="settings_add_conversion_cancel">Cancel</string>
-    <string name="settings_add_conversion_step_1">Choose a currency</string>
-    <string name="settings_add_conversion_step_2">Choose a provider</string>
-    <string name="settings_add_conversion_repeated">You already have %s given by %s</string>
 
     <string name="home_empty_hint">Welcome to Bitcoin Address Checker App (BitAC).\n\nYou can click on Check Address any time you want to see how many bitcoins an address has.\n\nAll of your saved addresses will appear here for easy access.\n\nEnjoy the app!</string>
     <string name="home_deleted_address_message">The address %s was deleted</string>
