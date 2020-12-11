@@ -3,8 +3,8 @@ buildscript {
         compileSdkVersion = 29
         minSdkVersion = 24
         targetSdkVersion = 29
-        versionCode = 3
-        versionName = "1.0.2"
+        versionCode = 4
+        versionName = "1.1.0"
 
         // https://maven.google.com/web/index.html
         appcompatVersion = "1.2.0"

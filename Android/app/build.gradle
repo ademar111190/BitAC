@@ -13,16 +13,6 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        resConfigs "en", "pt", "es"
-    }
-
-    signingConfigs {
-        release {
-            keyAlias System.getenv("BITAC_KEY_ALIAS")
-            keyPassword System.getenv("BITAC_KEY_PASSWORD")
-            storeFile file("../../Assets/keystore")
-            storePassword System.getenv("BITAC_STORE_PASSWORD")
-        }
     }
 
     buildTypes {
@@ -33,24 +23,6 @@ android {
             proguardFiles "proguard-rules.pro"
 
             buildConfigField "String", "BASE_API", "\"https://blockchain.info/\""
-        }
-        release {
-            signingConfig signingConfigs.release
-        }
-    }
-
-    flavorDimensions "env"
-    productFlavors {
-        development {
-            dimension "env"
-            versionName = rootProject.ext.versionName + " - development "
-        }
-        qa {
-            dimension "env"
-            versionName = rootProject.ext.versionName + " - qa - " + "git rev-parse --short HEAD".execute().text.trim()
-        }
-        production {
-            dimension "env"
         }
     }
 

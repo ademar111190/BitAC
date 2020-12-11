@@ -2,6 +2,7 @@
 .gradle
 .idea
 build
+app/release
 
 # files
 .DS_Store
