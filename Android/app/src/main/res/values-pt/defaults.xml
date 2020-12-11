@@ -1,6 +1,0 @@
-<resources>
-
-    <string name="default_currency">BRL</string>
-    <string name="default_provider">foxbit</string>
-
-</resources>

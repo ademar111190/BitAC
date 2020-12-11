@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Dark -->
     <color name="theme_ada_base">#7b1fa2</color>
     <color name="theme_ada_dark">#4a0072</color>
     <color name="theme_ada_light">#ae52d4</color>

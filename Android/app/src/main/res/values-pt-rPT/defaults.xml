@@ -1,6 +1,0 @@
-<resources>
-
-    <string name="default_currency">EUR</string>
-    <string name="default_provider">bitfinex</string>
-
-</resources>
