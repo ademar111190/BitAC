@@ -5,7 +5,7 @@
 
         <Preference
             android:key="about"
-            android:title="@string/about_title"/>
+            android:title="@string/about_title" />
 
         <ListPreference
             android:defaultValue="eleven"
@@ -14,7 +14,13 @@
             android:entryValues="@array/themes"
             android:key="theme"
             android:summary="@string/settings_theme_summary"
-            android:title="@string/settings_theme"/>
+            android:title="@string/settings_theme" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="sum_address"
+            android:summary="@string/settings_sum_address_summary"
+            android:title="@string/settings_sum_address" />
 
     </PreferenceCategory>
 

@@ -31,6 +31,13 @@ class SettingsFragment : PreferenceFragment(), SettingsView {
                 else -> null
             } != null
         }
+
+        findPreference("sum_address").setOnPreferenceChangeListener { preference, _ ->
+            when (preference.key) {
+                "sum_address" -> presenter.sum()
+                else -> null
+            } != null
+        }
     }
 
     override fun showError(throwable: Throwable) {

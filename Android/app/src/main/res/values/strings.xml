@@ -19,6 +19,9 @@
     <string name="settings_theme_doge">Doge theme</string>
     <string name="settings_theme_eleven">11 theme</string>
     <string name="settings_theme_ada">Ada theme</string>
+    <string name="settings_sum_address">Sum address</string>
+    <string name="settings_sum_address_title">Sum of listed address</string>
+    <string name="settings_sum_address_summary">Add a card to the top of the list with the summation of all address.</string>
 
     <string name="home_empty_hint">Welcome to Bitcoin Address Checker App (BitAC).\n\nYou can click on Check Address any time you want to see how many bitcoins an address has.\n\nAll of your saved addresses will appear here for easy access.\n\nEnjoy the app!</string>
     <string name="home_deleted_address_message">The address %s was deleted</string>

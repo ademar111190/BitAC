@@ -1,5 +1,6 @@
 package ademar.bitac.presenter
 
+import ademar.bitac.ext.WALLET_SUM_ID
 import ademar.bitac.ext.subscribeBy
 import ademar.bitac.interactor.wallet.*
 import ademar.bitac.model.StandardErrors
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class HomePresenter @Inject constructor(
 
         private val getWallets: GetWallets,
+        private val getWalletSum: GetWalletSum,
         private val updateWallets: UpdateWallets,
         private val walletMapper: WalletMapper,
         private val addWallet: AddWallet,
@@ -38,21 +40,26 @@ class HomePresenter @Inject constructor(
                 subscriptions.dispose()
             } else {
                 subscriptions.add(walletAddWatcher.observe()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy({
                             execute(Observable.just(it))
+                            checkSum()
                         }))
                 subscriptions.add(walletChangeWatcher.observe()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy({
                             execute(Observable.just(it))
+                            checkSum()
                         }))
                 subscriptions.add(walletDeleteWatcher.observe()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy({
                             val viewModel = walletMap.remove(it)
-                            if (viewModel != null) {
-                                view?.deleteWallet(viewModel)
-                            }
+                            if (viewModel != null) view?.deleteWallet(viewModel)
+                            checkSum()
                         }))
             }
         }
@@ -60,6 +67,7 @@ class HomePresenter @Inject constructor(
     fun loadData() {
         view?.showLoading()
         execute(getWallets.execute())
+        checkSum()
 
         subscriptions.add(getWalletsCount.execute()
                 .subscribeOn(Schedulers.io())
@@ -94,6 +102,14 @@ class HomePresenter @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy())
+    }
+
+    private fun checkSum() {
+        val viewModel = walletMap.remove(WALLET_SUM_ID)
+        if (viewModel != null) view?.deleteWallet(viewModel)
+        getWalletSum.execute().subscribeBy({ sumWallet ->
+            execute(Observable.just(sumWallet))
+        })
     }
 
     private fun execute(observable: Observable<Wallet>) {

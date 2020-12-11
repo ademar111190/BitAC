@@ -1,6 +1,7 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
+import ademar.bitac.ext.WALLET_SUM_ID
 import ademar.bitac.viewmodel.WalletViewModel
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,7 @@ class WalletAdapter : RecyclerView.Adapter<WalletViewHolder>() {
     fun add(viewModel: WalletViewModel) {
         items.add(viewModel)
         items = ArrayList(items.sortedWith(compareBy(
+                { it.walletId != WALLET_SUM_ID },
                 { it.name.toLowerCase() },
                 { it.address.toLowerCase() },
                 { it.creation.toLowerCase() }

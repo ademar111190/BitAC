@@ -21,6 +21,7 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @Inject
     lateinit var deleteWallet: DeleteWallet
+
     @Inject
     lateinit var copyToClipboard: CopyToClipboard
 
@@ -35,7 +36,11 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val listener = View.OnClickListener { view ->
             val menu = PopupMenu(view.context, view)
-            menu.inflate(R.menu.wallet)
+            if (itemView.address.text.isEmpty()) {
+                menu.inflate(R.menu.sum_wallet)
+            } else {
+                menu.inflate(R.menu.wallet)
+            }
             menu.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.copy_address -> {
@@ -70,6 +75,7 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.name.text = viewModel.name
         itemView.address.text = viewModel.address
         itemView.balance.text = viewModel.balance
+        itemView.address.visibility = if (viewModel.address.isEmpty()) View.GONE else View.VISIBLE
     }
 
     private fun delete() {

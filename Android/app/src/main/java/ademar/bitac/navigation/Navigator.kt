@@ -24,9 +24,12 @@ class Navigator @Inject constructor(
         putExtra(EXTRA_THEME, getTheme.execute())
     })
 
-    fun launchHome() = activity.startActivity(intentFactory.makeIntent().apply {
+    fun launchHome(
+            finish: Boolean = false
+    ) = activity.startActivity(intentFactory.makeIntent().apply {
         setClass(activity, HomeActivity::class.java)
         putExtra(EXTRA_THEME, getTheme.execute())
+        if (finish) activity.finishAffinity()
     })
 
     fun launchHome(theme: Theme) = activity.startActivity(intentFactory.makeIntent().apply {

@@ -19,6 +19,9 @@
     <string name="settings_theme_doge">Tema doge</string>
     <string name="settings_theme_eleven">Tema 11</string>
     <string name="settings_theme_ada">Tema ada</string>
+    <string name="settings_sum_address">Agregar dirección</string>
+    <string name="settings_sum_address_title">Sum of listed address</string>
+    <string name="settings_sum_address_summary">Agrega una tarjeta al comienzo de la lista con la suma del valor de todas las direcciones.</string>
 
     <string name="home_empty_hint">Bienvenido a la aplicación Comprobador de direcciones Bitcoin (BitAC).\n\nPuede hacer clic en el botón Comprobar dirección en cualquier momento para ver cuántos bitcoins tiene una dirección, después puedes guardar la dirección para comprobarla de nuevo en el futuro.\n\nTodas las direcciones guardadas aparecerán aquí, aproveche la aplicación.</string>
     <string name="home_deleted_address_message">la dirección %s fue borrada</string>

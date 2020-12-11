@@ -1,6 +1,7 @@
 package ademar.bitac.view
 
 import ademar.bitac.R
+import ademar.bitac.ext.WALLET_SUM_ID
 import ademar.bitac.ext.forceAnimation
 import ademar.bitac.ext.getTheme
 import ademar.bitac.injection.Injector
@@ -107,6 +108,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
 
     override fun deleteWallet(wallet: WalletViewModel) {
         removeWallet(wallet)
+        if (wallet.walletId == WALLET_SUM_ID) return
 
         val typedValue = TypedValue()
         theme.resolveAttribute(R.attr.snack_bar_action_text_color, typedValue, true)

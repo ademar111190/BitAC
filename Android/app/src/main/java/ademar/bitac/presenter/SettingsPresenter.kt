@@ -19,4 +19,8 @@ class SettingsPresenter @Inject constructor(
         navigator.launchHome(theme)
     }
 
+    fun sum() {
+        navigator.launchHome(true)
+    }
+
 }
