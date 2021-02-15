@@ -1,0 +1,2 @@
+El comprobador de direcciones Bitcoin (BitAC) es una aplicación de código abierto diseñada para ser ligera y rápida y proporcionar a los usuarios de Android una manera fácil y rápida de consultar el saldo de direcciones bitcoin.
+Esta aplicación no provee y no tiene la intención de proveer cualquier funcionalidad de una cartera de bitcoin, por lo que no podrá recibir, transferir o guardar bitcoins con BitAC, sólo podrá comprobar cuántos bitcoins tiene una cartera.

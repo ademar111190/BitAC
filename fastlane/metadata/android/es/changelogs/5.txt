@@ -1,0 +1,2 @@
+- Versión inicial en F-Droid
+- Actualización de las dependencias externas

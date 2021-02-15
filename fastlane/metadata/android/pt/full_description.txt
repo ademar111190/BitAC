@@ -1,0 +1,2 @@
+Verificador de Endereço Bitcoin (BitAC) é um aplicativo de código aberto desenhado para ser leve e rápido e prover aos usuários de Android uma maneira fácil e rápida de consultar o saldo de endereços bitcoin.
+Este aplicativo não prove e não tem a intenção de prover qualquer funcionalidade de uma carteira de bitcoin, sendo assim, você não poderá receber, transferir ou guardar bitcoins com o BitAC, você apenas poderá verificar quantos bitcoins uma carteira possui.

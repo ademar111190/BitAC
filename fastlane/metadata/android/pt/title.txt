@@ -1,0 +1,1 @@
+BitAC - Verificador de Endereço Bitcoin
