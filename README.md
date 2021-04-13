@@ -8,5 +8,9 @@ This application does not prove and is not intended to provide any functionality
 
 All contributions are welcome, from text corrections to new languages translations, from design improvements to a full UX/UI redesign, from a simple bug-fix to a new feature, please feel free to contribute.
 
-BitAC is available on Google Play:
-<a href='https://play.google.com/store/apps/details?id=ademar.bitac&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/ademar.bitac/)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=ademar.bitac)
