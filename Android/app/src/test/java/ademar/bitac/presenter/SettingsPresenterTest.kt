@@ -2,7 +2,7 @@ package ademar.bitac.presenter
 
 import ademar.bitac.navigation.Navigator
 import ademar.bitac.view.Theme
-import com.nhaarman.mockitokotlin2.verify
+import org.mockito.kotlin.verify
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -14,7 +14,7 @@ class SettingsPresenterTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
     }
 
     @Test

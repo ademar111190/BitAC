@@ -3,7 +3,7 @@ package ademar.bitac.interactor.wallet
 import ademar.bitac.repository.WalletRepository
 import ademar.bitac.test.fixture.AddressFixture
 import ademar.bitac.test.fixture.MultiAddressFixture
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.whenever
 import io.reactivex.rxjava3.core.Observable
 import org.junit.Before
 import org.junit.Test
@@ -18,7 +18,7 @@ class GetAddressDataTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
     }
 
     @Test

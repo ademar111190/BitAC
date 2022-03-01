@@ -2,7 +2,7 @@ package ademar.bitac.ext
 
 import ademar.bitac.model.Error
 import ademar.bitac.model.StandardErrors
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.whenever
 import okhttp3.internal.http2.ErrorCode
 import okhttp3.internal.http2.StreamResetException
 import org.junit.Before
@@ -27,7 +27,7 @@ class RetrofitTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         mockRetrofit.standardErrors = mockStandardErrors
         whenever(mockStandardErrors.unauthorized).thenReturn(mockUnauthorizedError)
         whenever(mockStandardErrors.noConnection).thenReturn(mockNoConnectionError)

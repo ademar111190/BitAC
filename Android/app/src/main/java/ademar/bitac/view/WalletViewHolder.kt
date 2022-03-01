@@ -10,11 +10,13 @@ import ademar.bitac.interactor.wallet.DeleteWallet
 import ademar.bitac.viewmodel.WalletViewModel
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.item_address.view.*
 import javax.inject.Inject
 
 class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,7 +38,7 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val listener = View.OnClickListener { view ->
             val menu = PopupMenu(view.context, view)
-            if (itemView.address.text.isEmpty()) {
+            if (itemView.findViewById<TextView>(R.id.address).text.isEmpty()) {
                 menu.inflate(R.menu.sum_wallet)
             } else {
                 menu.inflate(R.menu.wallet)
@@ -60,22 +62,27 @@ class WalletViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.context.theme.resolveAttribute(R.attr.card_cell_click, typedValue, true)
         val cardCellClick = typedValue.data
 
+        val root = itemView.findViewById<ViewGroup>(R.id.root)
+        val card = itemView.findViewById<CardView>(R.id.card)
         if (cardCellClick == 1) {
-            itemView.root.foreground = null
-            itemView.card.setOnClickListener(listener)
+            root.foreground = null
+            card.setOnClickListener(listener)
         } else {
-            itemView.card.foreground = null
-            itemView.root.setOnClickListener(listener)
+            card.foreground = null
+            root.setOnClickListener(listener)
         }
-        itemView.menu.setOnClickListener(listener)
+        itemView.findViewById<View>(R.id.menu).setOnClickListener(listener)
     }
 
     fun bind(viewModel: WalletViewModel) {
         this.viewModel = viewModel
-        itemView.name.text = viewModel.name
-        itemView.address.text = viewModel.address
-        itemView.balance.text = viewModel.balance
-        itemView.address.visibility = if (viewModel.address.isEmpty()) View.GONE else View.VISIBLE
+        val name = itemView.findViewById<TextView>(R.id.name)
+        val balance = itemView.findViewById<TextView>(R.id.balance)
+        val address = itemView.findViewById<TextView>(R.id.address)
+        name.text = viewModel.name
+        balance.text = viewModel.balance
+        address.text = viewModel.address
+        address.visibility = if (viewModel.address.isEmpty()) View.GONE else View.VISIBLE
     }
 
     private fun delete() {

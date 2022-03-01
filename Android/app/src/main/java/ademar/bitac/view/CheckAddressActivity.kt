@@ -15,13 +15,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.activity_check_address.*
-import kotlinx.android.synthetic.main.check_address_input.*
-import kotlinx.android.synthetic.main.check_address_output.*
 import javax.inject.Inject
 
 class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
@@ -50,18 +50,30 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
 
         Injector.get(this).inject(this)
 
-        toolbar.setNavigationOnClickListener { finish() }
-        input_qr_code.setOnClickListener { qrReader.initiateScan() }
+        findViewById<Toolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
+        findViewById<View>(R.id.input_qr_code).setOnClickListener { qrReader.initiateScan() }
 
         presenter.view = this
         presenter.loadData()
 
-        input_cancel.setOnClickListener { presenter.cancel() }
-        input_check.setOnClickListener { presenter.check(input_address.text.toString()) }
-        output_change.setOnClickListener { presenter.change() }
-        output_save.setOnClickListener { presenter.save(output_name.text.toString()) }
-        input_address.setActionNext { presenter.check(input_address.text.toString()) }
-        output_name.setActionSend { presenter.save(output_name.text.toString()) }
+        findViewById<View>(R.id.input_cancel).setOnClickListener {
+            presenter.cancel()
+        }
+        findViewById<View>(R.id.input_check).setOnClickListener {
+            presenter.check(findViewById<EditText>(R.id.input_address).text.toString())
+        }
+        findViewById<View>(R.id.output_change).setOnClickListener {
+            presenter.change()
+        }
+        findViewById<View>(R.id.output_save).setOnClickListener {
+            presenter.save(findViewById<EditText>(R.id.output_name).text.toString())
+        }
+        findViewById<EditText>(R.id.input_address).setActionNext {
+            presenter.check(findViewById<EditText>(R.id.input_address).text.toString())
+        }
+        findViewById<EditText>(R.id.output_name).setActionSend {
+            presenter.save(findViewById<EditText>(R.id.output_name).text.toString())
+        }
     }
 
     override fun onDestroy() {
@@ -75,34 +87,34 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
     }
 
     override fun showInput(viewModel: WalletViewModel) {
-        root.post {
-            val width = root.width.toFloat()
+        findViewById<View>(R.id.root).post {
+            val width = findViewById<View>(R.id.root).width.toFloat()
 
-            input_address.setText(viewModel.address)
-            output_address.text = viewModel.address
-            output_balance.text = viewModel.balance
-            output_name.setText(viewModel.name)
+            findViewById<EditText>(R.id.input_address).setText(viewModel.address)
+            findViewById<TextView>(R.id.output_address).text = viewModel.address
+            findViewById<TextView>(R.id.output_balance).text = viewModel.balance
+            findViewById<EditText>(R.id.output_name).setText(viewModel.name)
 
-            input_root.visibility = View.VISIBLE
-            output_root.visibility = View.VISIBLE
+            findViewById<View>(R.id.input_root).visibility = View.VISIBLE
+            findViewById<View>(R.id.output_root).visibility = View.VISIBLE
 
-            input_cancel.visibility = View.VISIBLE
-            input_check.visibility = View.VISIBLE
-            input_load.visibility = View.GONE
+            findViewById<View>(R.id.input_cancel).visibility = View.VISIBLE
+            findViewById<View>(R.id.input_check).visibility = View.VISIBLE
+            findViewById<View>(R.id.input_load).visibility = View.GONE
 
             if (status == ScreenStatus.SAVE) {
                 val animatorSet = AnimatorSet()
                 animatorSet.duration = animDuration
                 animatorSet.interpolator = AccelerateDecelerateInterpolator()
                 animatorSet.addOnAnimationEndListener {
-                    output_root.visibility = View.GONE
+                    findViewById<View>(R.id.output_root).visibility = View.GONE
                 }
                 animatorSet.playTogether(
-                        ObjectAnimator.ofFloat(input_root, "translationX", -width, 0.0f),
-                        ObjectAnimator.ofFloat(output_root, "translationX", 0.0f, width))
+                        ObjectAnimator.ofFloat(findViewById(R.id.input_root), "translationX", -width, 0.0f),
+                        ObjectAnimator.ofFloat(findViewById(R.id.output_root), "translationX", 0.0f, width))
                 animatorSet.start()
             } else {
-                output_root.visibility = View.GONE
+                findViewById<View>(R.id.output_root).visibility = View.GONE
             }
 
             status = ScreenStatus.INPUT
@@ -110,40 +122,40 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
     }
 
     override fun showInputLoading() {
-        input_cancel.visibility = View.GONE
-        input_check.visibility = View.GONE
-        input_load.visibility = View.VISIBLE
+        findViewById<View>(R.id.input_cancel).visibility = View.GONE
+        findViewById<View>(R.id.input_check).visibility = View.GONE
+        findViewById<View>(R.id.input_load).visibility = View.VISIBLE
     }
 
     override fun showSave(viewModel: WalletViewModel) {
-        root.post {
-            val width = root.width.toFloat()
+        findViewById<View>(R.id.root).post {
+            val width = findViewById<View>(R.id.root).width.toFloat()
 
-            input_address.setText(viewModel.address)
-            output_address.text = viewModel.address
-            output_balance.text = viewModel.balance
-            output_name.setText(viewModel.name)
+            findViewById<EditText>(R.id.input_address).setText(viewModel.address)
+            findViewById<TextView>(R.id.output_address).text = viewModel.address
+            findViewById<TextView>(R.id.output_balance).text = viewModel.balance
+            findViewById<EditText>(R.id.output_name).setText(viewModel.name)
 
-            input_root.visibility = View.VISIBLE
-            output_root.visibility = View.VISIBLE
+            findViewById<View>(R.id.input_root).visibility = View.VISIBLE
+            findViewById<View>(R.id.output_root).visibility = View.VISIBLE
 
-            output_change.visibility = View.VISIBLE
-            output_save.visibility = View.VISIBLE
-            output_load.visibility = View.GONE
+            findViewById<View>(R.id.output_change).visibility = View.VISIBLE
+            findViewById<View>(R.id.output_save).visibility = View.VISIBLE
+            findViewById<View>(R.id.output_load).visibility = View.GONE
 
             if (status == ScreenStatus.INPUT) {
                 val animatorSet = AnimatorSet()
                 animatorSet.duration = animDuration
                 animatorSet.interpolator = AccelerateDecelerateInterpolator()
                 animatorSet.addOnAnimationEndListener {
-                    input_root.visibility = View.GONE
+                    findViewById<View>(R.id.input_root).visibility = View.GONE
                 }
                 animatorSet.playTogether(
-                        ObjectAnimator.ofFloat(input_root, "translationX", 0.0f, -width),
-                        ObjectAnimator.ofFloat(output_root, "translationX", width, 0.0f))
+                        ObjectAnimator.ofFloat(findViewById(R.id.input_root), "translationX", 0.0f, -width),
+                        ObjectAnimator.ofFloat(findViewById(R.id.output_root), "translationX", width, 0.0f))
                 animatorSet.start()
             } else {
-                input_root.visibility = View.GONE
+                findViewById<View>(R.id.input_root).visibility = View.GONE
             }
 
             status = ScreenStatus.SAVE
@@ -151,9 +163,9 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
     }
 
     override fun showSaveLoading() {
-        output_change.visibility = View.GONE
-        output_save.visibility = View.GONE
-        output_load.visibility = View.VISIBLE
+        findViewById<View>(R.id.output_change).visibility = View.GONE
+        findViewById<View>(R.id.output_save).visibility = View.GONE
+        findViewById<View>(R.id.output_load).visibility = View.VISIBLE
     }
 
     override fun showError(error: Throwable) {
@@ -168,13 +180,13 @@ class CheckAddressActivity : AppCompatActivity(), CheckAddressView {
     }
 
     override fun showTips() {
-        input_hint.visibility = View.VISIBLE
-        output_hint.visibility = View.VISIBLE
+        findViewById<View>(R.id.input_hint).visibility = View.VISIBLE
+        findViewById<View>(R.id.output_hint).visibility = View.VISIBLE
     }
 
     override fun hideTips() {
-        input_hint.visibility = View.GONE
-        output_hint.visibility = View.GONE
+        findViewById<View>(R.id.input_hint).visibility = View.GONE
+        findViewById<View>(R.id.output_hint).visibility = View.GONE
     }
 
     private enum class ScreenStatus {

@@ -2,7 +2,7 @@ package ademar.bitac.ext
 
 import ademar.bitac.view.Theme
 import android.content.Intent
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +16,7 @@ class IntentTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         whenever(mockIntent.getSerializableExtra(EXTRA_THEME)).thenReturn(mockTheme)
     }
 

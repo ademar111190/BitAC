@@ -1,8 +1,8 @@
 package ademar.bitac.interactor.wallet
 
 import ademar.bitac.repository.WalletRepository
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -17,7 +17,7 @@ class DeleteWalletTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
     }
 
     @Test

@@ -11,20 +11,22 @@ import ademar.bitac.viewmodel.WalletViewModel
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity(), HomeView {
 
     private val adapter = WalletAdapter()
 
-    @Inject
-    lateinit var presenter: HomePresenter
+    @Inject lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(intent.getTheme().resTheme)
@@ -36,6 +38,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
         presenter.view = this
         presenter.loadData()
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.inflateMenu(R.menu.home)
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -46,12 +49,13 @@ class HomeActivity : AppCompatActivity(), HomeView {
             } != null
         }
 
-        reload.setOnClickListener { presenter.reload() }
-        refresh.setOnRefreshListener { presenter.refresh() }
-        action.setOnClickListener { presenter.checkAddress() }
+        findViewById<View>(R.id.reload).setOnClickListener { presenter.reload() }
+        findViewById<SwipeRefreshLayout>(R.id.refresh).setOnRefreshListener { presenter.refresh() }
+        findViewById<View>(R.id.action).setOnClickListener { presenter.checkAddress() }
 
+        val list = findViewById<RecyclerView>(R.id.list)
         list.layoutManager = LinearLayoutManager(this)
-        adapter.emptyView = hint
+        adapter.emptyView = findViewById(R.id.hint)
         list.adapter = adapter
     }
 
@@ -61,31 +65,31 @@ class HomeActivity : AppCompatActivity(), HomeView {
     }
 
     override fun showLoading() {
-        list.visibility = GONE
-        load.visibility = VISIBLE
-        reload.visibility = GONE
-        refresh.isRefreshing = false
+        findViewById<RecyclerView>(R.id.list).visibility = GONE
+        findViewById<View>(R.id.load).visibility = VISIBLE
+        findViewById<View>(R.id.reload).visibility = GONE
+        findViewById<SwipeRefreshLayout>(R.id.refresh).isRefreshing = false
     }
 
     override fun showRefreshing() {
-        list.visibility = VISIBLE
-        load.visibility = GONE
-        reload.visibility = GONE
-        refresh.isRefreshing = true
+        findViewById<RecyclerView>(R.id.list).visibility = VISIBLE
+        findViewById<View>(R.id.load).visibility = GONE
+        findViewById<View>(R.id.reload).visibility = GONE
+        findViewById<SwipeRefreshLayout>(R.id.refresh).isRefreshing = true
     }
 
     override fun showContent() {
-        list.visibility = VISIBLE
-        load.visibility = GONE
-        reload.visibility = GONE
-        refresh.isRefreshing = false
+        findViewById<RecyclerView>(R.id.list).visibility = VISIBLE
+        findViewById<View>(R.id.load).visibility = GONE
+        findViewById<View>(R.id.reload).visibility = GONE
+        findViewById<SwipeRefreshLayout>(R.id.refresh).isRefreshing = false
     }
 
     override fun showRetry() {
-        list.visibility = GONE
-        load.visibility = GONE
-        reload.visibility = VISIBLE
-        refresh.isRefreshing = false
+        findViewById<RecyclerView>(R.id.list).visibility = GONE
+        findViewById<View>(R.id.load).visibility = GONE
+        findViewById<View>(R.id.reload).visibility = VISIBLE
+        findViewById<SwipeRefreshLayout>(R.id.refresh).isRefreshing = false
     }
 
     override fun showError(error: Throwable) {
@@ -114,7 +118,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
         theme.resolveAttribute(R.attr.snack_bar_action_text_color, typedValue, true)
         val color = typedValue.data
 
-        Snackbar.make(root, getString(R.string.home_deleted_address_message, wallet.name), Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(R.id.root), getString(R.string.home_deleted_address_message, wallet.name), Snackbar.LENGTH_LONG)
                 .setAction(R.string.app_undo) {
                     presenter.undoDelete(wallet)
                 }

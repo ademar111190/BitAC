@@ -51,6 +51,7 @@
         <activity
             android:name="ademar.bitac.view.StartActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
             android:screenOrientation="fullUser"
             android:theme="@style/StartTheme">
             <intent-filter>
@@ -63,21 +64,25 @@
         <activity
             android:name="ademar.bitac.view.AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
             android:screenOrientation="fullUser"/>
 
         <activity
             android:name="ademar.bitac.view.HomeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
             android:screenOrientation="fullUser"/>
 
         <activity
             android:name="ademar.bitac.view.SettingsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
             android:screenOrientation="fullUser"/>
 
         <activity
             android:name="ademar.bitac.view.CheckAddressActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
             android:excludeFromRecents="true"
             android:screenOrientation="fullUser"
             android:theme="@style/BaseDialogLightTheme"/>
@@ -85,6 +90,7 @@
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false"
             android:screenOrientation="fullUser"
             tools:replace="screenOrientation"/>
 

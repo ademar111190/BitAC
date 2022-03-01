@@ -1,18 +1,19 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-kapt"
-apply plugin: "kotlin-android-extensions"
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "org.jetbrains.kotlin.kapt"
+}
 
 android {
 
-    compileSdkVersion 29
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "ademar.bitac"
         minSdkVersion 24
-        targetSdkVersion 29
-        versionCode 5
-        versionName "1.1.1"
+        targetSdkVersion 32
+        versionCode 6
+        versionName "1.1.2"
     }
 
     buildTypes {
@@ -23,6 +24,10 @@ android {
             proguardFiles "proguard-rules.pro"
 
             buildConfigField "String", "BASE_API", "\"https://blockchain.info/\""
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-DEBUG"
         }
     }
 
@@ -45,6 +50,17 @@ android {
         exclude "META-INF/LICENSE.txt"
         exclude "META-INF/NOTICE.txt"
         exclude "META-INF/*.properties"
+        exclude "META-INF/AL2.0"
+        exclude "META-INF/LGPL2.1"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
     }
 
 }
@@ -55,6 +71,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.cardview:cardview:$cardviewVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayoutVersion"
     implementation "com.bluelinelabs:logansquare:$loganSquareVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     implementation "com.github.aurae.retrofit2:converter-logansquare:$loganSquareConverterVersion"
@@ -66,13 +83,12 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
     testImplementation "junit:junit:$jUnitVersion"
     testImplementation "org.assertj:assertj-core:$assertJVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
 }

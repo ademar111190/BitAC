@@ -2,7 +2,7 @@ package ademar.bitac.interactor.wallet
 
 import ademar.bitac.model.Wallet
 import ademar.bitac.repository.WalletRepository
-import com.nhaarman.mockitokotlin2.*
+import org.mockito.kotlin.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -21,7 +21,7 @@ class AddWalletTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
     }
 
     @Test

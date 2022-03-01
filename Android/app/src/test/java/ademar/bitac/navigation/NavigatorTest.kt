@@ -5,9 +5,9 @@ import ademar.bitac.interactor.GetTheme
 import ademar.bitac.view.*
 import android.app.Activity
 import android.content.Intent
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.verifyNoMoreInteractions
+import org.mockito.kotlin.whenever
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -23,7 +23,7 @@ class NavigatorTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
         whenever(mockIntentFactory.makeIntent()).thenReturn(mockIntent)
     }
 

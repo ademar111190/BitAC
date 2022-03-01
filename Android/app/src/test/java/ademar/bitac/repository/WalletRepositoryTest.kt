@@ -12,7 +12,7 @@ import ademar.bitac.test.JsonTestUtils
 import ademar.bitac.test.fixture.MultiAddressFixture
 import ademar.bitac.test.fixture.RetrofitFixture
 import android.content.Context
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.whenever
 import io.reactivex.rxjava3.core.Observable
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -40,7 +40,7 @@ class WalletRepositoryTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
 
         whenever(mockContext.getString(R.string.error_message_unknown)).thenReturn("UNKNOWN")
         whenever(mockContext.getString(R.string.error_message_unauthorized)).thenReturn("UNAUTHORIZED")

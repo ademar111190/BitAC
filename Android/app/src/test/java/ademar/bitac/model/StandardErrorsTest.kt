@@ -2,7 +2,7 @@ package ademar.bitac.model
 
 import ademar.bitac.R
 import android.content.Context
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -15,7 +15,7 @@ class StandardErrorsTest {
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        MockitoAnnotations.openMocks(this)
 
         whenever(mockContext.getString(R.string.error_message_unknown)).thenReturn("UNKNOWN")
         whenever(mockContext.getString(R.string.error_message_unauthorized)).thenReturn("UNAUTHORIZED")
