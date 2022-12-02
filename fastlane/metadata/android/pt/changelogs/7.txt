@@ -1,0 +1,2 @@
+- Atualização de dependências externas
+- Adição de ícone monocromatico

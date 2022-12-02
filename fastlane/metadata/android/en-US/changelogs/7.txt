@@ -1,0 +1,2 @@
+- Update external dependencies
+- Add monochrome icons
