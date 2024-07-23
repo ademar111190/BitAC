@@ -9,7 +9,7 @@ import java.io.IOException
 
 var Retrofit.standardErrors: StandardErrors by FieldProperty()
 
-fun <T> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create {
+fun <T : Any> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create {
     val response = try {
         call.execute()
     } catch (e: IOException) {
@@ -20,6 +20,7 @@ fun <T> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create {
         }
         return@create
     }
+
     if (response != null) {
         when (response.code()) {
             200 -> {
@@ -31,15 +32,18 @@ fun <T> Retrofit.observeBody(call: Call<T>): Observable<T> = Observable.create {
                     it.onError(standardErrors.unknown)
                 }
             }
+
             401 -> it.onError(standardErrors.unauthorized)
             500 -> {
                 val errorMessage = response.errorBody()?.string()
                 it.onError(if (errorMessage != null) Error(errorMessage) else standardErrors.unknown)
             }
+
             else -> {
                 val errorBody = response.errorBody()
                 if (errorBody != null) {
-                    val converter = responseBodyConverter<Error>(Error::class.java, arrayOf<Annotation>())
+                    val converter =
+                        responseBodyConverter<Error>(Error::class.java, arrayOf<Annotation>())
                     val error: Error? = converter.convert(errorBody)
                     it.onError(if (error?.message?.isNotEmpty() == true) error else standardErrors.unknown)
                 } else {

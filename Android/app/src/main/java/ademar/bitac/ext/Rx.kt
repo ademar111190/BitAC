@@ -12,26 +12,26 @@ import io.reactivex.rxjava3.disposables.Disposable
  */
 
 @CheckReturnValue
-fun <T> Observable<T>.subscribeBy(
-        onNext: (T) -> Unit = {},
-        onError: (Throwable) -> Unit = { errorLogger(it) },
-        onComplete: () -> Unit = {}
+fun <T : Any> Observable<T>.subscribeBy(
+    onNext: (T) -> Unit = {},
+    onError: (Throwable) -> Unit = { errorLogger(it) },
+    onComplete: () -> Unit = {},
 ): Disposable = subscribe(onNext, onError, onComplete)
 
 @CheckReturnValue
-fun <T> Single<T>.subscribeBy(
-        onSuccess: (T) -> Unit = {},
-        onError: (Throwable) -> Unit = { errorLogger(it) }
+fun <T : Any> Single<T>.subscribeBy(
+    onSuccess: (T) -> Unit = {},
+    onError: (Throwable) -> Unit = { errorLogger(it) },
 ): Disposable = subscribe(onSuccess, onError)
 
 @CheckReturnValue
-fun <T> Maybe<T>.subscribeBy(
-        onSuccess: (T) -> Unit = {},
-        onError: (Throwable) -> Unit = { errorLogger(it) }
+fun <T : Any> Maybe<T>.subscribeBy(
+    onSuccess: (T) -> Unit = {},
+    onError: (Throwable) -> Unit = { errorLogger(it) },
 ): Disposable = subscribe(onSuccess, onError)
 
 @CheckReturnValue
 fun Completable.subscribeBy(
-        onComplete: () -> Unit = {},
-        onError: (Throwable) -> Unit = { errorLogger(it) }
+    onComplete: () -> Unit = {},
+    onError: (Throwable) -> Unit = { errorLogger(it) },
 ): Disposable = subscribe(onComplete, onError)

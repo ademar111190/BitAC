@@ -1,19 +1,21 @@
+import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
+
 buildscript {
     ext {
         // https://maven.google.com/web/index.html
-        appcompatVersion = "1.5.1"
+        appcompatVersion = "1.7.0"
 
         // https://github.com/joel-costigliola/assertj-core/releases
-        assertJVersion = "3.23.1"
+        assertJVersion = "3.26.3"
 
         // https://maven.google.com/web/index.html
         cardviewVersion = "1.0.0"
 
-        // https://github.com/google/dagger/releases
-        daggerVersion = "2.44.2"
+        // https://github.com/google/dagger/releases/latest
+        daggerVersion = "2.51.1"
 
         // https://github.com/FasterXML/jackson-core/releases
-        jacksonVersion = "2.14.1"
+        jacksonVersion = "2.17.2"
 
         // https://github.com/junit-team/junit4/releases
         jUnitVersion = "4.13.2"
@@ -25,25 +27,25 @@ buildscript {
         loganSquareConverterVersion = "1.4.1"
 
         // https://maven.google.com/web/index.html
-        materialVersion = "1.7.0"
+        materialVersion = "1.12.0"
 
         // https://github.com/mockito/mockito
-        mockitoVersion = "4.9.0"
+        mockitoVersion = "5.12.0"
 
         // https://github.com/nhaarman/mockito-kotlin/releases
-        mockitoKotlinVersion = "4.1.0"
+        mockitoKotlinVersion = "5.4.0"
 
         // https://github.com/square/okhttp/releases
-        okHttpVersion = "4.10.0"
+        okHttpVersion = "4.12.0"
 
         // https://github.com/square/retrofit/releases
-        retrofitVersion = "2.9.0"
+        retrofitVersion = "2.11.0"
 
         // https://github.com/ReactiveX/RxAndroid/releases
         rxAndroidVersion = "3.0.2"
 
         // https://github.com/ReactiveX/RxJava/releases
-        rxJavaVersion = "3.1.5"
+        rxJavaVersion = "3.1.8"
 
         // https://maven.google.com/web/index.html
         swiperefreshlayoutVersion = "1.1.0"
@@ -55,12 +57,20 @@ buildscript {
 
 plugins {
     // https://maven.google.com/web/index.html
-    id "com.android.application" version '7.3.1' apply false
+    id "com.android.application" version "8.5.1" apply false
 
     // https://github.com/JetBrains/kotlin
-    id "org.jetbrains.kotlin.android" version "1.7.21" apply false
+    id "org.jetbrains.kotlin.android" version "1.8.20" apply false
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}
+
+subprojects {
+    tasks.withType(KaptGenerateStubs).configureEach {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
 }
