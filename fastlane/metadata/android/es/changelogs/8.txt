@@ -1,0 +1,3 @@
+- Actualización de las dependencias externas
+- Incrementar API mínimo
+- Actualización de la dirección bitcoin a bc1

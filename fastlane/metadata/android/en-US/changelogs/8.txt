@@ -1,0 +1,3 @@
+- Update external dependencies
+- Increase minimum API
+- Update bitcoin address to bc1
