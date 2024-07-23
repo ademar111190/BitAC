@@ -53,7 +53,7 @@
             <p>This application does not provide and is not intended to provide any functionality of a bitcoin wallet, so you can not receive, send or save bitcoins with BitAC, you can only check how many bitcoins a wallet has.</p>
             <p>If you like to report a problem, propose a solution, or ask questions, you can go to the application repository at the following address: <a href="https://github.com/ademar111190/BitAC"> https://github.com/ademar111190/BitAC</a> you can also send an email to <a href="mailto:ademar111190@gmail.com">ademar111190@gmail.com</a>.</p>
             <p>All contributions are welcome, from text corrections to new languages translations, from design improvements to a full UX/UI redesign, from a simple bug-fix to a new feature, please feel free to contribute.</p>
-            <p>The application uses the <a href="https://blockchain.info/api">blockchain.info</a> API, ideally it would have its own service, however to maintain a server would cost money, so if you want to contribute to the project financially you can donate bitcoin to the following address: <a href="bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8">1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8</a>.  Thanks!</p>
+            <p>The application uses the <a href="https://blockchain.info/api">blockchain.info</a> API, ideally it would have its own service, however to maintain a server would cost money, so if you want to contribute to the project financially you can donate bitcoin to the following address: <a href="bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y">bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y</a>.  Thanks!</p>
         ]]>
     </string>
 

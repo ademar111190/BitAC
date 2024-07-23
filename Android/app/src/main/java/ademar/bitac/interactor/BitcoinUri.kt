@@ -32,11 +32,11 @@ class BitcoinUri @Inject constructor() {
         return null
     }
 
-    // TODO improve to verify if an address is valid even if has valid characters and size
-    private fun isAnAddress(candidate: String): Boolean {
-        val validSize = candidate.length in 26..35
-        val validCharacters = candidate.replace(regex, "").isEmpty()
-        return validSize && validCharacters
-    }
+        // TODO improve to verify if an address is valid even if has valid characters and size
+        private fun isAnAddress(candidate: String): Boolean {
+            val validSize = candidate.length in 26..62
+            val validCharacters = candidate.replace(regex, "").isEmpty()
+            return validSize && validCharacters
+        }
 
 }

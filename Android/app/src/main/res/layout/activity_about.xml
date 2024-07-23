@@ -38,9 +38,10 @@
                 tools:text="@string/about_text" />
 
             <ImageView
-                android:layout_width="296dp"
-                android:layout_height="296dp"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
                 android:contentDescription="@string/app_donation_address"
                 android:src="@drawable/donation" />
 

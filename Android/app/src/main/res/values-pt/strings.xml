@@ -53,7 +53,7 @@
             <p>Este aplicativo não prove e não tem a intenção de prover qualquer funcionalidade de uma carteira de bitcoin, sendo assim, você não poderá receber, transferir ou guardar bitcoins com o BitAC, você apenas poderá verificar quantos bitcoins uma carteira possui.</p>
             <p>Se você deseja reportar um problema, propor uma solução, ou tirar dúvidas, você pode ir ao repositório do aplicativo no endereço a seguir: <a href="https://github.com/ademar111190/BitAC">https://github.com/ademar111190/BitAC</a> você também pode enviar um e-mail para <a href="mailto:ademar111190@gmail.com">ademar111190@gmail.com</a>.</p>
             <p>Todas as contribuições são bem vindas, desde correções de textos à traduções para novos idiomas, desde melhorias pontuais no design à uma completa reformulação na UX/UI do aplicativo, desde um simples bug-fix à uma nova funcionalidade, sinta-se a vontade para contribuir.</p>
-            <p>Este aplicativo usa a API da <a href="https://blockchain.info/api">blockchain.info</a>, o ideal seria ter um serviço próprio, porém para manter um servidor é necessário dinheiro, então se você desejar contribuir com o projeto financeiramente você pode doar bitcoin para o endereço a seguir: <a href="bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8">1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8</a>.</p>
+            <p>Este aplicativo usa a API da <a href="https://blockchain.info/api">blockchain.info</a>, o ideal seria ter um serviço próprio, porém para manter um servidor é necessário dinheiro, então se você desejar contribuir com o projeto financeiramente você pode doar bitcoin para o endereço a seguir: <a href="bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y">bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y</a>.</p>
         ]]>
     </string>
 

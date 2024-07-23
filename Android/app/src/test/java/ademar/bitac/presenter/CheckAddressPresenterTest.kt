@@ -42,7 +42,7 @@ class CheckAddressPresenterTest {
     @Mock private lateinit var mockHumanException: Exception
 
     private val action = "An action"
-    private val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
+    private val address = "bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y"
     private val addressFailure = "An address failure message"
     private val defaultWalletName = "An wallet name"
     private val invalidAddress = "an invalid address message"

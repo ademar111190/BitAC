@@ -25,38 +25,38 @@ class BitcoinUriTest {
 
     @Test
     fun testGetAddressNoUri() {
-        val address = BitcoinUri().getAddress("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
     fun testGetAddressOnlyAddress() {
-        val address = BitcoinUri().getAddress("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
     fun testGetAddressOnlyAddressNewLine() {
-        val address = BitcoinUri().getAddress("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8\n")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y\n")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
     fun testGetAddressWithAmount() {
-        val address = BitcoinUri().getAddress("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?amount=1.2")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?amount=1.2")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
     fun testGetAddressWithLabel() {
-        val address = BitcoinUri().getAddress("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?label=Satoshi")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?label=Satoshi")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
     fun testGetAddressComplete() {
-        val address = BitcoinUri().getAddress("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?amount=1.2&message=Payment&label=Satoshi&extra=other-param")
-        assertThat(address).isEqualTo("1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val address = BitcoinUri().getAddress("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?amount=1.2&message=Payment&label=Satoshi&extra=other-param")
+        assertThat(address).isEqualTo("bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
     }
 
     @Test
@@ -79,31 +79,31 @@ class BitcoinUriTest {
 
     @Test
     fun testGetLabelOnlyAddress() {
-        val label = BitcoinUri().getLabel("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8")
+        val label = BitcoinUri().getLabel("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y")
         assertThat(label).isNull()
     }
 
     @Test
     fun testGetLabelOnlyAddressNewLine() {
-        val label = BitcoinUri().getLabel("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8\n")
+        val label = BitcoinUri().getLabel("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y\n")
         assertThat(label).isNull()
     }
 
     @Test
     fun testGetLabelWithAmount() {
-        val label = BitcoinUri().getLabel("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?amount=1.2")
+        val label = BitcoinUri().getLabel("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?amount=1.2")
         assertThat(label).isNull()
     }
 
     @Test
     fun testGetLabelWithLabel() {
-        val label = BitcoinUri().getLabel("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?label=Satoshi")
+        val label = BitcoinUri().getLabel("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?label=Satoshi")
         assertThat(label).isEqualTo("Satoshi")
     }
 
     @Test
     fun testGetLabelComplete() {
-        val label = BitcoinUri().getLabel("bitcoin:1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8?amount=1.2&message=Payment&label=Satoshi&extra=other-param")
+        val label = BitcoinUri().getLabel("bitcoin:bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y?amount=1.2&message=Payment&label=Satoshi&extra=other-param")
         assertThat(label).isEqualTo("Satoshi")
     }
 

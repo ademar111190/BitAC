@@ -36,7 +36,7 @@ class WalletRepositoryTest {
     private lateinit var mockRetrofit: Retrofit
     private lateinit var mockWalletCloud: WalletCloud
 
-    private val address = "1DPYudPDKLxnFkTtDUbWrEZZhfbuHoWgX8"
+    private val address = "bc1qm9n8x3jge2356hhyywfwrsmfczr49fxz37da8y"
 
     @Before
     fun setup() {
